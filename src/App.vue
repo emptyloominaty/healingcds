@@ -37,4 +37,5 @@
 }
 
 @import './assets/css/main.css';
+@import './assets/css/flash.css';
 </style>

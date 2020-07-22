@@ -8,7 +8,7 @@
 export default {
   name: 'Healing-Cds',
   props: {
-    time: Number
+    time: String   // TODO FIX Number
   },
   methods:{
     getTime(time) {
@@ -30,7 +30,7 @@ export default {
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
   .time-dmg {
     font-size:20px

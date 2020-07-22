@@ -1,4 +1,16 @@
 <template>
+
+    <!--TODO
+     -flash messages animacie
+     -nacitavanie hcds do zoznamu
+     -
+     -
+     -
+     -
+    -->
+
+
+
     <div class="input-group-hcd">
         <form id="add-healing" @submit.prevent="addCd()">
             <h5 class="">Add New Healing CD </h5>
@@ -18,6 +30,9 @@
                     </option>
                 </select>
                 <button  id="form-heal-submit" type='submit' name='submit' >Add Heal CD</button>
+                <transition name="fade">
+                    <flash-message class="flash-message-custom-success" ></flash-message>
+                </transition>
             </div>
 
             <!--TODO: Add Labels -->
@@ -48,7 +63,6 @@
                     <option>#4CAF50</option>
                 </datalist>
             </div>
-
         </form>
     </div>
 </template>
@@ -71,7 +85,7 @@
                 healingCdsData1: [],
                 healingCdsLength: "",
                 healingCooldowns: [
-                    {id: 0, name: "-", cooldown: "", healValue: 0, colorB: "#fff", colorF: "#000"},
+                    {id: 0, name: "", cooldown: "", healValue: 0, colorB: "#fff", colorF: "#000"},
                     {id: 1, name: "Revival", cooldown: 180, healValue: 0, colorB: "#00FF96", colorF: "#0f0f0f"},
                     {id: 2, name: "Yu'lon", cooldown: 180, healValue: 0, colorB: "#00FF96", colorF: "#0f0f0f"},
                     {id: 3, name: "HTT", cooldown: 180, healValue: 0, colorB: "#0070DE", colorF: "#fff"},
@@ -96,23 +110,37 @@
                 /* load data from local storage */
                 this.healingCdsDataAll = localStorage.getItem("healingcdsData")
                 this.healingCdsDataAll=JSON.parse(this.healingCdsDataAll)
-                /*  check length of array  */
-                if (this.healingCdsDataAll!==null) {
-                this.healingCdsLength = this.healingCdsDataAll.length
-                }
-                /*  create empty array if null  */
-                if (!Array.isArray(this.healingCdsDataAll)) {
-                        this.healingCdsDataAll = []
-                }
-                /* add hCd data to the array */
-                this.healingCdsData1=[this.healCdTime,this.healVal,this.healName,0,[],this.healColor,this.healFontColor]
-                /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color   */
-                //fruits.push("Kiwi");
-                this.healingCdsDataAll[this.healingCdsLength]=(this.healingCdsData1)
 
-                /*  save data to local storage */
-                localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
-               ///// JSON.stringify() and JSON.parse().
+                /*  create empty array if null  */
+                if (this.healingCdsDataAll===null) {
+                  this.healingCdsDataAll = []
+                }
+                /*  check length of array  */
+                this.healingCdsLength = this.healingCdsDataAll.length
+
+
+
+                /* add hCd data to the array */
+                if (this.healCdTime>0) {
+                    this.healingCdsData1 = [this.healCdTime, this.healVal, this.healName, 0, [], this.healColor, this.healFontColor]
+                    /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color   */
+                    this.healingCdsDataAll[this.healingCdsLength] = (this.healingCdsData1)
+
+                    /*  save data to local storage */
+                    localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
+
+                    /* flash */
+                    this.flash('Heal CD added', 'success', {timeout: 1500, important: true});
+                } else {
+                    this.flash('choose CD u pepega', 'failure', {timeout: 2500, important: true});
+                }
+                /* reset inputs */
+                this.healName = ""
+                this.healCdTime = ""
+                this.healVal = ""
+                this.healColor = "#4CAF50"
+                this.healFontColor = "#FFF"
+                this.healSelect = ""
             },
             selectCd() {
                 this.healName = this.healSelect.name
@@ -120,7 +148,6 @@
                 this.healVal = this.healSelect.healValue
                 this.healColor = this.healSelect.colorB
                 this.healFontColor = this.healSelect.colorF
-
             }
         }
     }
@@ -141,6 +168,9 @@
 
     select, button {
         border-radius: 3px;
+    }
+    button:focus,button:active {
+        outline: none !important;
     }
 
     select {
@@ -193,4 +223,12 @@
     .input-group-hcd {
         width:300px
     }
+
+
+
+
+
+
+
+
 </style>

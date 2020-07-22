@@ -1,0 +1,31 @@
+/*
+* FLASH
+*/
+.flash-message-custom-success {
+    height: 25px;
+    margin: 5px;
+    font-weight: 600;
+ /*   color: rgb(1, 255, 112);*/
+    /*   background-color: rgba(1, 255, 112, 0.5);*/
+}
+
+.flash__message-content {
+    padding: 5px;
+    text-align: center;
+}
+
+
+
+.flash__wrapper .success {
+      color: #01FF70;
+    border-color: #01FF70;
+    border-radius: 3px;
+    border: 1px solid;
+}
+
+.flash__wrapper .failure {
+    color: #FF0D00;
+    border-color: #FF0D00;
+    border-radius: 3px;
+    border: 1px solid;
+}

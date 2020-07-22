@@ -1,10 +1,17 @@
 <template>
-    
+    <div>
+
+    </div>
 </template>
 
 <script>
     export default {
-        name: "List-HealingCds"
+        name: "ListHealingCds",
+        data() {
+            return {
+
+            }
+        }
     }
 </script>
 

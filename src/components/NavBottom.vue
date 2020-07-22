@@ -19,7 +19,9 @@
     }
     button {
         margin-right: 3px;
-
+    }
+    button:focus,button:active {
+        box-shadow: none !important;
     }
     button:hover {
         cursor:pointer;
