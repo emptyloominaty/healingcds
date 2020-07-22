@@ -5,8 +5,11 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    <p class="footer">Healing CDs App 2 Made by Empty </p>
   </div>
 </template>
+
+
 
 <style lang="scss">
 #app {
@@ -29,4 +32,9 @@
     }
   }
 }
+.footer {
+  margin-top:250px;
+}
+
+@import './assets/css/main.css';
 </style>

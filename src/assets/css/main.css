@@ -1,0 +1,23 @@
+
+.input-group-hcd {
+    margin: 7px;
+    padding: 10px 20px 20px 20px;
+    border: 2px solid;
+    border-color: #49F493;
+    border-radius: 5px;
+   /* background-color: rgba(39, 255, 31, 0.30);*/
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width:400px;
+}
+
+.input-group-hcd:focus-within  {
+    transition: 150ms;
+    border-color: #01FF70;
+   /* background-color: rgba(39, 255, 31, 0.45);*/
+}
+
+#app {
+    background-color: #f4f4f6;
+}
