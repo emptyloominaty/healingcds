@@ -30,6 +30,10 @@
         name: "ListHealingCds",
         data() {
             return {
+                g_bossFight:  {
+                    id:0,
+                    name:""
+                },
                 testColor: "#FFF",
                 listData: JSON.parse(localStorage.getItem("healingcdsData")),
                 healingCdsDataAll: []
@@ -37,7 +41,7 @@
         },
         mounted() {
             /* listener */
-            this.$root.$on('reloead-heal-list', data => (this.listData = data) )
+            this.$root.$on('reload-heal-list', data => (this.listData = data) )
         }
     }
 </script>

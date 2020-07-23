@@ -13,5 +13,12 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  data: {
+    g_bossFight: {
+      id:0,
+      name:""
+    }
+  },
   render: h => h(App)
 }).$mount('#app')
+

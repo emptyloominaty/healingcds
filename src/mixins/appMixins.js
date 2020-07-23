@@ -1,7 +1,11 @@
 export default {
     data() {
         return {
-            healingCdsDataAll:[]
+            healingCdsDataAll:[],
+            g_bossFight:  {
+                id:0,
+                name:""
+            }
                }
     },
     methods: {
@@ -18,21 +22,17 @@ export default {
             this.healingCdsDataAll = localStorage.getItem("healingcdsData")
             this.healingCdsDataAll = JSON.parse(this.healingCdsDataAll)
 
-            /*  create empty array if null  */
-            if (this.healingCdsDataAll === null) {
-                this.healingCdsDataAll = []
-            }
-
             /* delete hcd */
-            this.healingCdsDataAll.splice(id, 1);
+            this.healingCdsDataAll[this.g_bossFight.id].splice(id, 1);
 
             /* reindex  */
-            this.healingCdsDataAll.forEach((item,index) => {
-                this.healingCdsDataAll[index][7]=index
+            this.healingCdsDataAll[this.g_bossFight.id].forEach((item,index) => {
+                this.healingCdsDataAll[this.g_bossFight.id][index][7]=index
             })
 
             /* sender */
-            this.$root.$emit('reloead-heal-list', this.healingCdsDataAll)
+            this.$root.$emit('reloead-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
+            console.log(this.healingCdsDataAll)
             /*  save data to local storage */
             localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
 

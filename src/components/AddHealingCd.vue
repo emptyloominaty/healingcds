@@ -1,7 +1,7 @@
 <template>
     <div class="input-group-hcd">
         <form id="add-healing" @submit.prevent="addCd()">
-            <h5 class="">Add New Healing CD </h5>
+            <h5 class="">Add New Healing CD ({{ g_bossFight.id }})</h5>
 
             <!-- Main Form -->
             <div class="form-group" id="heal-user-input">
@@ -65,6 +65,10 @@
                 healColor: "",
                 healFontColor: "",
                 //var
+                g_bossFight:  {
+                    id:0,
+                    name:""
+                },
                 healingCdsDataAll: [],
                 healingCdsData1: [],
                 healingCdsLength: "",
@@ -97,21 +101,23 @@
 
                 /*  create empty array if null  */
                 if (this.healingCdsDataAll===null) {
-                  this.healingCdsDataAll = []
+                  this.healingCdsDataAll = [[]]
                 }
+                if(typeof this.healingCdsDataAll[this.g_bossFight.id] === 'undefined' ) {
+                    this.healingCdsDataAll[this.g_bossFight.id] = []
+                }
+
                 /*  check length of array  */
-                this.healingCdsLength = this.healingCdsDataAll.length
-
-
+                this.healingCdsLength = this.healingCdsDataAll[this.g_bossFight.id].length
 
                 /* add hCd data to the array */
                 if (this.healCdTime>0) {
                     this.healingCdsData1 = [this.healCdTime, this.healVal, this.healName, 0, [], this.healColor, this.healFontColor,this.healingCdsLength]
                     /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color 7 id  */
-                    this.healingCdsDataAll[this.healingCdsLength] = (this.healingCdsData1)
+                    this.healingCdsDataAll[this.g_bossFight.id][this.healingCdsLength] = (this.healingCdsData1)
 
                     /* sender */
-                    this.$root.$emit('reloead-heal-list',this.healingCdsDataAll)
+                    this.$root.$emit('reload-heal-list',this.healingCdsDataAll[this.g_bossFight.id])
                     /*  save data to local storage */
                     localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
 
@@ -120,9 +126,6 @@
                 } else {
                     this.flash('choose CD u pepega', 'failure', {timeout: 2500, important: true});
                 }
-
-
-
                 /* reset inputs */
                 this.healName = ""
                 this.healCdTime = ""
