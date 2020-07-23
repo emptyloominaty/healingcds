@@ -15,7 +15,7 @@
                     <td class="table-id">{{ listDat[7] }}</td>
                     <td class="table-name">{{ listDat[2] }}</td>
                     <td class="table-cd">{{ secToMin(listDat[0]) }}</td>
-                    <td class="table-button"><button class="delete-heal-btn" v-on:click="deleteHealCd(listDat[7])" n >Delete</button></td>
+                    <td class="table-button"><button v-bind:style="{ color: listDat[6] }" class="delete-heal-btn" v-on:click="deleteHealCd(listDat[7])" n >Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -43,6 +43,10 @@
 </script>
 
 <style scoped>
+    button:focus,button:active {
+        outline: none !important;
+    }
+
     .hcds-list-h {
         padding:10px 7px 2px 7px;
         margin: 0;

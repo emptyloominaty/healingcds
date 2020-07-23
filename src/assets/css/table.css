@@ -1,3 +1,13 @@
+.delete-heal-btn {
+    border: 0 solid;
+    background-color: transparent;
+    border-radius:3px;
+}
+
+.delete-heal-btn:hover {
+    border: 0 solid;
+    background-color: rgba(0,0,0,0.3);
+}
 
 table {
     border-collapse: collapse;

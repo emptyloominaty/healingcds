@@ -1,6 +1,6 @@
 <template>
   <div class="healingcds-main">
-    <span class="time-dmg" >Time: {{ secToMin(time) }} test xd</span>
+    <span class="time-dmg" >{{ secToMin(time) }} </span> <hr>
   </div>
 </template>
 
@@ -30,4 +30,11 @@ export default {
 a {
   color: #42b983;
 }
+
+  hr {
+    margin: 1px auto;
+    margin-top: 3px;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
 </style>

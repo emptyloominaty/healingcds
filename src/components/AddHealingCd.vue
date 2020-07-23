@@ -158,6 +158,7 @@
     select, button {
         border-radius: 3px;
     }
+
     button:focus,button:active {
         outline: none !important;
     }
@@ -211,6 +212,11 @@
         width:300px
     }
 
+    input:focus {
+        box-shadow: none !important;
+        border: 2px solid #01FF70 !important;
+        transition: border-width 0.07s ease-in-out;
+    }
 
 
 
