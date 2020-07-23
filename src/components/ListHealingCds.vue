@@ -14,8 +14,8 @@
                <tr v-for="listDat in listData" :key="listDat[7]" v-bind:style="{ backgroundColor: listDat[5], color: listDat[6] }">
                     <td class="table-id">{{ listDat[7] }}</td>
                     <td class="table-name">{{ listDat[2] }}</td>
-                    <td class="table-cd">{{ listDat[0] }} s</td>
-                    <td class="table-button"></td>
+                    <td class="table-cd">{{ secToMin(listDat[0]) }}</td>
+                    <td class="table-button"><button class="delete-heal-btn" v-on:click="deleteHealCd(listDat[7])" n >Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -23,12 +23,16 @@
 </template>
 
 <script>
+    import appMixins from '../mixins/appMixins'
+
     export default {
+        mixins: [appMixins],
         name: "ListHealingCds",
         data() {
             return {
                 testColor: "#FFF",
-                listData: JSON.parse(localStorage.getItem("healingcdsData"))
+                listData: JSON.parse(localStorage.getItem("healingcdsData")),
+                healingCdsDataAll: []
             }
         },
         mounted() {

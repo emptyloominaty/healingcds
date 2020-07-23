@@ -30,9 +30,9 @@
                 <label for="form-heal-cd">Heal Cd</label>
                 <input class="form-control" id="form-heal-cd" type="number" name="text" placeholder="Heal CD in Sec" v-model="healCdTime"
                        autocomplete="off" >
-                <label for="form-heal">Heal Value</label>
+             <!--   <label for="form-heal">Heal Value</label>
                 <input class="form-control" id="form-heal" type="number" name="text" placeholder="Heal Value" value="50" v-model="healVal"
-                       autocomplete="off" >
+                       autocomplete="off" >-->
                 <label for="form-heal-color">Heal Background Color</label>
                 <input class="form-control" id="form-heal-color" type="text" name="text" placeholder="Color" value="#4CAF50"
                        v-model="healColor"

@@ -1,0 +1,29 @@
+
+table {
+    border-collapse: collapse;
+    margin:7px;
+    border: 1px solid #a0a0a0;
+    border-radius:50px;
+}
+
+td, th {
+    text-align: center;
+    padding: 8px;
+    /* color:#777;*/
+}
+
+.table-id {
+    width: 50px;
+}
+
+.table-name {
+    width: 100px;
+}
+
+.table-cd {
+    width: 75px;
+}
+
+.table-button {
+    width: 75px;
+}

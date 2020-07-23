@@ -38,4 +38,5 @@
 
 @import './assets/css/main.css';
 @import './assets/css/flash.css';
+@import './assets/css/table.css';
 </style>
