@@ -1,22 +1,9 @@
 <template>
-
-    <!--TODO
-     -flash messages animacie
-     -nacitavanie hcds do zoznamu
-     -
-     -
-     -
-     -
-    -->
-
-
-
     <div class="input-group-hcd">
         <form id="add-healing" @submit.prevent="addCd()">
             <h5 class="">Add New Healing CD </h5>
 
-            <!--TODO: Add Labels -->
-
+            <!-- Main Form -->
             <div class="form-group" id="heal-user-input">
                 <input class="form-control" id="form-heal-healer" type="text" placeholder="Healer Name (Optional)" value=""
                        autocomplete="off" v-model="healerName">
@@ -30,33 +17,30 @@
                     </option>
                 </select>
                 <button  id="form-heal-submit" type='submit' name='submit' >Add Heal CD</button>
-                <transition name="fade">
                     <flash-message class="flash-message-custom-success" ></flash-message>
-                </transition>
             </div>
 
-            <!--TODO: Add Labels -->
-
+            <!-- Custom CD -->
             <div id="heal-user-input2">
                 <h5> Custom Healing CD </h5>
                 <label for="form-heal-name">Heal Name</label>
                 <input class="form-control" id="form-heal-name" type="text" name="text" placeholder="Heal Name" value="()"
                        v-model="healName"
-                       autocomplete="off">
+                       autocomplete="off" >
                 <label for="form-heal-cd">Heal Cd</label>
                 <input class="form-control" id="form-heal-cd" type="number" name="text" placeholder="Heal CD in Sec" v-model="healCdTime"
-                       autocomplete="off">
+                       autocomplete="off" >
                 <label for="form-heal">Heal Value</label>
                 <input class="form-control" id="form-heal" type="number" name="text" placeholder="Heal Value" value="50" v-model="healVal"
-                       autocomplete="off">
+                       autocomplete="off" >
                 <label for="form-heal-color">Heal Background Color</label>
                 <input class="form-control" id="form-heal-color" type="text" name="text" placeholder="Color" value="#4CAF50"
                        v-model="healColor"
-                       autocomplete="off" list="colors">
+                       autocomplete="off" list="colors" >
                 <label for="form-heal-font-color">Heal Font Color</label>
                 <input class="form-control" id="form-heal-font-color" type="text" name="text" placeholder="Font Color" value="#FFF"
                        v-model="healFontColor"
-                       autocomplete="off" list="colors">
+                       autocomplete="off" list="colors" >
                 <datalist id="colors">
                     <option>#FFFFFF</option>
                     <option>#000000</option>
@@ -86,22 +70,22 @@
                 healingCdsLength: "",
                 healingCooldowns: [
                     {id: 0, name: "", cooldown: "", healValue: 0, colorB: "#fff", colorF: "#000"},
-                    {id: 1, name: "Revival", cooldown: 180, healValue: 0, colorB: "#00FF96", colorF: "#0f0f0f"},
-                    {id: 2, name: "Yu'lon", cooldown: 180, healValue: 0, colorB: "#00FF96", colorF: "#0f0f0f"},
-                    {id: 3, name: "HTT", cooldown: 180, healValue: 0, colorB: "#0070DE", colorF: "#fff"},
-                    {id: 4, name: "SLT", cooldown: 180, healValue: 0, colorB: "#0070DE", colorF: "#fff"},
-                    {id: 5, name: "Fluorish", cooldown: 90, healValue: 0, colorB: "#FF7D0A", colorF: "#fff"},
-                    {id: 6, name: "Tree", cooldown: 180, healValue: 0, colorB: "#FF7D0A", colorF: "#fff"},
-                    {id: 7, name: "Tranquility", cooldown: 180, healValue: 0, colorB: "#FF7D0A", colorF: "#fff"},
-                    {id: 8, name: "AW", cooldown: 120, healValue: 0, colorB: "#F58CBA", colorF: "#fff"},
-                    {id: 9, name: "Aura", cooldown: 180, healValue: 0, colorB: "#F58CBA", colorF: "#fff"},
-                    {id: 10, name: "Divine Hymn", cooldown: 180, healValue: 0, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 11, name: "Salvation", cooldown: 720, healValue: 0, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 12, name: "Apotheosis", cooldown: 120, healValue: 0, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 13, name: "Barrier", cooldown: 180, healValue: 0, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 14, name: "Evangelism", cooldown: 90, healValue: 0, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 15, name: "Darkness", cooldown: 180, healValue: 0, colorB: "#A330C9", colorF: "#fff"},
-                    {id: 16, name: "RallyingCry", cooldown: 180, healValue: 0, colorB: "#C79C6E", colorF: "#fff"}
+                    {id: 1, name: "Revival", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
+                    {id: 2, name: "Yu'lon", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
+                    {id: 3, name: "HTT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff"},
+                    {id: 4, name: "SLT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff"},
+                    {id: 5, name: "Fluorish", cooldown: 90, healValue: 10, colorB: "#FF7D0A", colorF: "#fff"},
+                    {id: 6, name: "Tree", cooldown: 180, healValue: 10, colorB: "#FF7D0A", colorF: "#fff"},
+                    {id: 7, name: "Tranquility", cooldown: 180, healValue: 10, colorB: "#FF7D0A", colorF: "#fff"},
+                    {id: 8, name: "AW", cooldown: 120, healValue: 10, colorB: "#F58CBA", colorF: "#fff"},
+                    {id: 9, name: "Aura", cooldown: 180, healValue: 10, colorB: "#F58CBA", colorF: "#fff"},
+                    {id: 10, name: "Divine Hymn", cooldown: 180, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
+                    {id: 11, name: "Salvation", cooldown: 720, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
+                    {id: 12, name: "Apotheosis", cooldown: 120, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
+                    {id: 13, name: "Barrier", cooldown: 180, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
+                    {id: 14, name: "Evangelism", cooldown: 90, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
+                    {id: 15, name: "Darkness", cooldown: 180, healValue: 10, colorB: "#A330C9", colorF: "#fff"},
+                    {id: 16, name: "RallyingCry", cooldown: 180, healValue: 10, colorB: "#C79C6E", colorF: "#fff"}
                 ]
             }
         },
@@ -122,18 +106,23 @@
 
                 /* add hCd data to the array */
                 if (this.healCdTime>0) {
-                    this.healingCdsData1 = [this.healCdTime, this.healVal, this.healName, 0, [], this.healColor, this.healFontColor]
-                    /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color   */
+                    this.healingCdsData1 = [this.healCdTime, this.healVal, this.healName, 0, [], this.healColor, this.healFontColor,this.healingCdsLength]
+                    /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color 7 id  */
                     this.healingCdsDataAll[this.healingCdsLength] = (this.healingCdsData1)
 
+                    /* sender */
+                    this.$root.$emit('reloead-heal-list',this.healingCdsDataAll)
                     /*  save data to local storage */
                     localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
 
                     /* flash */
-                    this.flash('Heal CD added', 'success', {timeout: 1500, important: true});
+                    this.flash('Heal CD added - '+this.healName, 'success', {timeout: 1500, important: true});
                 } else {
                     this.flash('choose CD u pepega', 'failure', {timeout: 2500, important: true});
                 }
+
+
+
                 /* reset inputs */
                 this.healName = ""
                 this.healCdTime = ""
@@ -175,9 +164,7 @@
 
     select {
         padding: 2px 5px 2px 5px;
-        margin: 10px 5px 10px 5px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 10px auto 10px auto;
         width:200px;
         color: #444;
         font-weight:600;
@@ -202,7 +189,7 @@
     button:hover {
         transition-duration: 75ms;
         background-color: #49F493;
-        box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.2);
+        box-shadow: 0 0 4px 1px rgba(0,0,0,0.2);
     }
 
     #heal-user-input2,#form-heal-healer {

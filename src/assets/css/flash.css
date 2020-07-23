@@ -12,8 +12,13 @@
 .flash__message-content {
     padding: 5px;
     text-align: center;
+    background-color:#fff;
 }
 
+.flash__message {
+    z-index:9999;
+    position:relative;
+}
 
 
 .flash__wrapper .success {
@@ -21,6 +26,7 @@
     border-color: #01FF70;
     border-radius: 3px;
     border: 1px solid;
+
 }
 
 .flash__wrapper .failure {
