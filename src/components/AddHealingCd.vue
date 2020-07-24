@@ -54,6 +54,7 @@
 <script>
     export default {
         name: "AddHealingCd",
+        props: ["g_bossFight"],
         data() {
             return {
                 //v-model
@@ -65,10 +66,6 @@
                 healColor: "",
                 healFontColor: "",
                 //var
-                g_bossFight:  {
-                    id:0,
-                    name:""
-                },
                 healingCdsDataAll: [],
                 healingCdsData1: [],
                 healingCdsLength: "",

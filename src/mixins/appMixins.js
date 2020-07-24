@@ -1,12 +1,10 @@
 export default {
+    props: {"g_bossFight": Object
+    },
     data() {
         return {
-            healingCdsDataAll:[],
-            g_bossFight:  {
-                id:0,
-                name:""
-            }
-               }
+            healingCdsDataAll: [],
+        }
     },
     methods: {
         secToMin(timeSec) {
@@ -31,8 +29,7 @@ export default {
             })
 
             /* sender */
-            this.$root.$emit('reloead-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
-            console.log(this.healingCdsDataAll)
+            this.$root.$emit('reload-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
             /*  save data to local storage */
             localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
 

@@ -30,10 +30,6 @@
         name: "ListHealingCds",
         data() {
             return {
-                g_bossFight:  {
-                    id:0,
-                    name:""
-                },
                 testColor: "#FFF",
                 listData: JSON.parse(localStorage.getItem("healingcdsData")),
                 healingCdsDataAll: []
