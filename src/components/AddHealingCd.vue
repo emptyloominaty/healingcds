@@ -1,12 +1,10 @@
 <template>
     <div class="input-group-hcd">
         <form id="add-healing" @submit.prevent="addCd()">
-            <h5 class="">Add New Healing CD ({{ g_bossFight.id }})</h5>
+            <h5 class="">Add New Healing CD </h5>
 
             <!-- Main Form -->
             <div class="form-group" id="heal-user-input">
-                <input class="form-control" id="form-heal-healer" type="text" placeholder="Healer Name (Optional)" value=""
-                       autocomplete="off" v-model="healerName">
                 <select id="select-heal" @change="selectCd()" v-model="healSelect" >
                     <option
                             v-for="healingCooldown in healingCooldowns"
@@ -17,7 +15,6 @@
                     </option>
                 </select>
                 <button  id="form-heal-submit" type='submit' name='submit' >Add Heal CD</button>
-                    <flash-message class="flash-message-custom-success" ></flash-message>
             </div>
 
             <!-- Custom CD -->
@@ -54,6 +51,7 @@
 <script>
     export default {
         name: "AddHealingCd",
+        props: ["g_bossFight"],
         data() {
             return {
                 //v-model
@@ -65,10 +63,6 @@
                 healColor: "",
                 healFontColor: "",
                 //var
-                g_bossFight:  {
-                    id:0,
-                    name:""
-                },
                 healingCdsDataAll: [],
                 healingCdsData1: [],
                 healingCdsLength: "",
@@ -103,7 +97,7 @@
                 if (this.healingCdsDataAll===null) {
                   this.healingCdsDataAll = [[]]
                 }
-                if(typeof this.healingCdsDataAll[this.g_bossFight.id] === 'undefined' ) {
+                if(typeof this.healingCdsDataAll[this.g_bossFight.id] === 'undefined' || this.healingCdsDataAll[this.g_bossFight.id] === null  ) {
                     this.healingCdsDataAll[this.g_bossFight.id] = []
                 }
 
@@ -118,13 +112,13 @@
 
                     /* sender */
                     this.$root.$emit('reload-heal-list',this.healingCdsDataAll[this.g_bossFight.id])
-                    /*  save data to local storage */
+                    /*  store data */
                     localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
 
                     /* flash */
-                    this.flash('Heal CD added - '+this.healName, 'success', {timeout: 1500, important: true});
+                    this.flash('Heal CD added - '+this.healName, 'success', {timeout: 3000, important: true});
                 } else {
-                    this.flash('choose CD u pepega', 'failure', {timeout: 2500, important: true});
+                    this.flash('choose CD u pepega', 'failure', {timeout: 4500, important: true});
                 }
                 /* reset inputs */
                 this.healName = ""
@@ -167,7 +161,7 @@
     }
 
     select {
-        padding: 2px 5px 2px 5px;
+        padding: 5px 7px 5px 7px;
         margin: 10px auto 10px auto;
         width:200px;
         color: #444;

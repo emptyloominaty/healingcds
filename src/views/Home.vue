@@ -1,5 +1,25 @@
 <template>
   <div class="home">
+    <!--  ******************************************** -->
+    <header>
+      <div id="data-buttons">
+
+        <select id="saved-data" @change="selectDataMethod()" v-model="selectData">
+          <option   v-for="bossDat in bossData"
+                    :key="bossDat.id"
+                    v-bind:value="{ id: bossDat.id, name: bossDat.name}" >
+           {{ bossDat.id+" - "+bossDat.name }}
+                    </option>
+        </select>
+
+        <span id="id-data"> {{ g_bossFight.id+" - "+g_bossFight.name }}</span>
+        <input id="name-data" type="text" value="" autocomplete="off" placeholder="Data Name" v-model="nameBossData" >
+        <button class="btn btn-outline-dark btn-sm" @click="saveBossData()" >Set Name</button>
+        <span id="loadinfo"></span>
+      </div>
+
+    </header>
+    <!--  ********************************************  -->
     <section class="cds-table">
       <!--for each-->
       <CdTable time=0 />
@@ -9,16 +29,19 @@
       <CdTable time=80 />
       <CdTable time=125 />
     </section>
+
     <navBottom/>
+
     <div class="healAndDmg">
-      <section class="healcds">
-        <add-healing-cd/>
-        <list-healing-cds/>
+      <section class="healcds" >
+        <add-healing-cd v-bind:g_bossFight="g_bossFight"  />
+        <list-healing-cds v-bind:g_bossFight="g_bossFight" />
       </section>
 
       <section class="dmgtimes">
       </section>
     </div>
+    <flash-message class="flash-message-custom-success" ></flash-message>
   </div>
 </template>
 
@@ -36,6 +59,55 @@ export default {
     NavBottom,
     AddHealingCd,
     ListHealingCds
+  },
+  data() {
+    return {
+      //v-model
+      selectData: "",
+      nameBossData: "",
+      //var
+      g_bossFight: {
+        id: 0,
+        name: ""
+      },
+      bossData: [
+        {id: 0,name: ""},{id: 1,name: ""},{id: 2,name: ""},{id: 3,name: ""},{id: 4,name: ""},{id: 5,name: ""},
+        {id: 6,name: ""},{id: 7,name: ""},{id: 8,name: ""},{id: 9,name: ""}
+      ]
+      }
+    },
+  methods: {
+    selectDataMethod() {
+      this.g_bossFight.id=this.selectData.id
+      this.g_bossFight.name=this.selectData.name
+
+      this.healingCdsDataAll = localStorage.getItem("healingcdsData") //TODO: FUNCTION PLS LOAD SAVE
+      this.healingCdsDataAll = JSON.parse(this.healingCdsDataAll)
+      this.$root.$emit('reload-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
+    },
+    saveBossData() {
+      this.bossData[this.g_bossFight.id].name = this.nameBossData
+      this.g_bossFight.name = this.nameBossData
+
+      /* load boss data*/
+      this.bossData = localStorage.getItem("bossFightNames")
+      this.bossData=JSON.parse(this.bossData)
+
+      /* create data if null */
+      if (this.bossData===null) {
+        this.bossData= [{id: 0,name: ""},{id: 1,name: ""},{id: 2,name: ""},{id: 3,name: ""},{id: 4,name: ""},{id: 5,name: ""},
+        {id: 6,name: ""},{id: 7,name: ""},{id: 8,name: ""},{id: 9,name: ""}]
+      }
+
+      this.bossData[this.g_bossFight.id].name =this.nameBossData
+
+      /* store data */
+      localStorage.setItem('bossFightNames', JSON.stringify(this.bossData))
+      /* flash*/
+      this.flash('Boss Fight Renamed - ('+this.g_bossFight.id+') '+this.nameBossData, 'success', {timeout: 3000, important: true});
+      /* reset input */
+      this.nameBossData = ""
+    }
   }
 }
 </script>
@@ -48,6 +120,13 @@ export default {
     margin: 0 auto;
     text-align: left;
   }
+  #id-data {
+    margin: 5px;
+  }
+  button:focus, button:active {
+    outline: none !important;
+  }
+
 
 
 </style>

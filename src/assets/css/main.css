@@ -1,21 +1,21 @@
 
 .input-group-hcd {
-    margin: 7px;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+    margin: 20px 7px 7px 7px;
     padding: 10px 20px 20px 20px;
-    border: 2px solid;
-    border-color: #49F493;
     border-radius: 5px;
-   /* background-color: rgba(39, 255, 31, 0.30);*/
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     width:400px;
+    transition: box-shadow  100ms ease;
+    background-color: #fcfcfc;
 }
 
-.input-group-hcd:focus-within  {
-    border-color: #01FF70;
-   /* background-color: rgba(39, 255, 31, 0.45);*/
-}
+/*.input-group-hcd:focus-within  {
+    transition: box-shadow  100ms ease;
+    box-shadow: 0 0 5px 1px rgba(0, 219, 11, 0.3);
+}*/
 
 #app {
     background-color: #f4f4f6;

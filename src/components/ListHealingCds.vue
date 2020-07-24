@@ -15,7 +15,7 @@
                     <td class="table-id">{{ listDat[7] }}</td>
                     <td class="table-name">{{ listDat[2] }}</td>
                     <td class="table-cd">{{ secToMin(listDat[0]) }}</td>
-                    <td class="table-button"><button v-bind:style="{ color: listDat[6] }" class="delete-heal-btn" v-on:click="deleteHealCd(listDat[7])" n >Delete</button></td>
+                    <td class="table-button p-0 m-0"><button v-bind:style="{ color: listDat[6] }" class="delete-heal-btn" v-on:click="deleteHealCd(listDat[7])" n >Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -30,10 +30,6 @@
         name: "ListHealingCds",
         data() {
             return {
-                g_bossFight:  {
-                    id:0,
-                    name:""
-                },
                 testColor: "#FFF",
                 listData: JSON.parse(localStorage.getItem("healingcdsData")),
                 healingCdsDataAll: []
