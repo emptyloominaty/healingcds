@@ -26,7 +26,7 @@ export default {
             this.healingCdsDataAll[this.g_bossFight.id].forEach((item,index) => {
                 this.healingCdsDataAll[this.g_bossFight.id][index][7]=index
             })
-
+            this.flash('Healing CD Deleted ', 'success', {timeout: 3000, important: true});
             /* sender */
             this.$root.$emit('reload-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
             /*  save data to local storage */
