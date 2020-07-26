@@ -1,4 +1,4 @@
-.delete-heal-btn {
+.delete-heal-btn,.delete-damage-btn {
     border: 0 solid;
     background-color: transparent;
     /*border-radius:3px;*/
@@ -7,7 +7,7 @@
     transition: background-color 100ms ;
 }
 
-.delete-heal-btn:hover {
+.delete-heal-btn:hover,.delete-damage-btn:hover {
     border: 0 solid;
     background-color: rgba(0,0,0,0.3);
     transition: background-color 100ms ;
@@ -17,6 +17,17 @@ table {
     border-collapse: collapse;
     margin:7px;
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+    background-color: #fcfcfc;
+}
+
+/* damage table */
+.damage-table-times tr:nth-child(even){
+    background-color: #FFCCC7;
+}
+.damage-table-times tr:nth-child(odd){
+    background-color: #FFDEDB;
+}
+.damage-table-times th {
     background-color: #fcfcfc;
 }
 

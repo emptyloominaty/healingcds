@@ -21,28 +21,23 @@
             <div id="heal-user-input2">
                 <h5> Custom Healing CD </h5>
                 <label for="form-heal-name">Heal Name</label>
-                <input class="form-control" id="form-heal-name" type="text" name="text" placeholder="Heal Name" value="()"
+                <input class="form-control text-center" id="form-heal-name" type="text" name="text" value="()"
                        v-model="healName"
                        autocomplete="off" >
-                <label for="form-heal-cd">Heal Cd</label>
-                <input class="form-control" id="form-heal-cd" type="number" name="text" placeholder="Heal CD in Sec" v-model="healCdTime"
+                <label for="form-heal-cd">Heal Cd (Sec)</label>
+                <input class="form-control text-center" id="form-heal-cd" type="number" name="text" v-model="healCdTime"
                        autocomplete="off" >
              <!--   <label for="form-heal">Heal Value</label>
                 <input class="form-control" id="form-heal" type="number" name="text" placeholder="Heal Value" value="50" v-model="healVal"
                        autocomplete="off" >-->
                 <label for="form-heal-color">Heal Background Color</label>
-                <input class="form-control" id="form-heal-color" type="text" name="text" placeholder="Color" value="#4CAF50"
+                <input class="form-control text-center" id="form-heal-color" type="text" name="text"  value="#000"
                        v-model="healColor"
-                       autocomplete="off" list="colors" >
+                       autocomplete="off"  >
                 <label for="form-heal-font-color">Heal Font Color</label>
-                <input class="form-control" id="form-heal-font-color" type="text" name="text" placeholder="Font Color" value="#FFF"
+                <input class="form-control text-center" id="form-heal-font-color" type="text" name="text"  value="#FFF"
                        v-model="healFontColor"
-                       autocomplete="off" list="colors" >
-                <datalist id="colors">
-                    <option>#FFFFFF</option>
-                    <option>#000000</option>
-                    <option>#4CAF50</option>
-                </datalist>
+                       autocomplete="off"  >
             </div>
         </form>
     </div>
@@ -91,7 +86,7 @@
             addCd() {
                 /* load data from local storage */
                 this.healingCdsDataAll = localStorage.getItem("healingcdsData")
-                this.healingCdsDataAll=JSON.parse(this.healingCdsDataAll)
+                this.healingCdsDataAll = JSON.parse(this.healingCdsDataAll)
 
                 /*  create empty array if null  */
                 if (this.healingCdsDataAll===null) {
@@ -116,9 +111,9 @@
                     localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
 
                     /* flash */
-                    this.flash('Heal CD added - '+this.healName, 'success', {timeout: 3000, important: true});
+                    this.flash('Heal CD Added - '+this.healName, 'success', {timeout: 3000, important: true});
                 } else {
-                    this.flash('choose CD u pepega', 'failure', {timeout: 4500, important: true});
+                    this.flash('Choose CD u pepega', 'failure', {timeout: 4500, important: true});
                 }
                 /* reset inputs */
                 this.healName = ""
@@ -142,14 +137,21 @@
 <style scoped>
     h5 {
         color: #444;
+        text-align:center;
     }
     label {
         color: #777;
+        font-size:12px;
+        margin-top:5px;
+        margin-bottom: 2px;
     }
     form, #heal-user-input {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
+    }
+    form input {
+        font-weight:600;
     }
 
     select, button {
@@ -168,6 +170,7 @@
         font-weight:600;
         border-color: #ced4da;
         background-color: rgba(1, 255, 112, 0.21);
+
     }
     select option{
         background-color: #fff;
@@ -195,19 +198,7 @@
         margin: 0 auto;
     }
 
-    h5 {
-        text-align:center;
-    }
 
-    label {
-        font-size:12px;
-        margin-top:5px;
-        margin-bottom: 2px;
-    }
-
-    .input-group-hcd {
-        width:300px
-    }
 
     input:focus {
         box-shadow: none !important;
@@ -215,6 +206,11 @@
         transition: border-width 0.07s ease-in-out;
     }
 
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
 
 

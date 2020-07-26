@@ -27,12 +27,22 @@
 
     export default {
         mixins: [appMixins],
+        props: ["g_bossFight"],
         name: "ListHealingCds",
         data() {
             return {
                 testColor: "#FFF",
-                listData: JSON.parse(localStorage.getItem("healingcdsData")),
+                listData: this.loadHealingCdsData(),
                 healingCdsDataAll: []
+            }
+        },
+        methods: {
+            loadHealingCdsData() {
+                /* load data from local storage */
+                this.healingCdsDataAll = localStorage.getItem("healingcdsData")
+                this.healingCdsDataAll=JSON.parse(this.healingCdsDataAll)
+
+                return this.healingCdsDataAll[this.g_bossFight.id]
             }
         },
         mounted() {
