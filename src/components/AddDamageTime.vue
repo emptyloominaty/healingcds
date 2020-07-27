@@ -5,7 +5,7 @@
                 <h5>Add New Raid Damage </h5>
                 <div id="damage-user-input">
 
-                    <input class="form-control text-center" type="text" name="text" placeholder="Damage Name"
+                    <input class="form-control text-center" type="text" name="text" placeholder="Damage Name (Optional)"
                            autocomplete="off" v-model="vDamageName">
                     <input class="form-control text-center"  type="time" placeholder="Time" value="00:00"
                            autocomplete="off" v-model="vDamageTime">
@@ -52,10 +52,17 @@
                 this.damageTimes[this.g_bossFight.id].sort(function(a, b) {
                     return a[1] - b[1];
                 })
+                /* reindex  */
+                this.damageTimes[this.g_bossFight.id].forEach((item,index) => {
+                    this.damageTimes[this.g_bossFight.id][index][2]=index
+                })
+
                 /*  store data */
                 localStorage.setItem('damagetimesData', JSON.stringify(this.damageTimes))
 
-                /* sender */
+                /* emit reload main */
+                this.$emit('reloadHealingCdsMain')
+                /* emit reload dmg list */
                 this.$root.$emit('reload-damage-list',this.damageTimes[this.g_bossFight.id])
                 /* flash */
                 this.flash('Damage Time Added - '+this.vDamageName+" ("+this.vDamageTime+")", 'success', {timeout: 3000, important: true});

@@ -3,8 +3,8 @@
 */
 .flash-message-custom-success {
     position:fixed;
-    top:5px;
-    right:5px;
+    top:10px;
+    right:10px;
     margin: 5px;
     font-weight: 600;
 }
@@ -21,15 +21,15 @@
 }
 
 .flash__wrapper .success {
-      color: #01FF70;
-    border-color: #01FF70;
+      color: #01a153;
+    border-color: #01a153;
     border-radius: 3px;
     border: 1px solid;
 }
 
 .flash__wrapper .info {
-    color: #00B7D9;
-    border-color: #00B7D9;
+    color: #0085a5;
+    border-color: #0085A5;
     border-radius: 3px;
     border: 1px solid;
 }
@@ -40,3 +40,15 @@
     border-radius: 3px;
     border: 1px solid;
 }
+
+.flash-transition-enter-active, .flash-transition-leave-active {
+    transition: all 250ms ease;
+}
+.flash-transition-enter{
+    opacity: 0;
+    transform:translateY(100%);
+}
+.flash-transition-leave-to  {
+    opacity: 0;
+    transform:translateY(-100%);
+ }

@@ -49,11 +49,23 @@ export default {
             })
             /* flash */
             this.flash('Damage Time Deleted ', 'success', {timeout: 3000, important: true});
+
+
             /* sender */
             this.$root.$emit('reload-damage-list', this.damageTimes[this.g_bossFight.id])
             /*  save data to local storage */
             localStorage.setItem('damagetimesData', JSON.stringify(this.damageTimes))
+            /* emit to main list */
+            this.$emit('reloadHealingCdsMain',{})
+
             return id
+        },
+        loadDamageTimesData() {
+            /* load data from local storage */
+            this.damageTimes = localStorage.getItem("damagetimesData")
+            this.damageTimes = JSON.parse(this.damageTimes)
+
+            return this.damageTimes[this.g_bossFight.id]
         }
     }
 }

@@ -53,11 +53,7 @@
 </script>
 
 <style scoped>
-    button:focus,button:active {
-        outline: none !important;
-    }
-
-    .hcds-list-h {
+      .hcds-list-h {
         padding:10px 7px 2px 7px;
         margin: 0;
         text-align:center;

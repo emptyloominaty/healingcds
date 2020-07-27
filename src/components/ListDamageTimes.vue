@@ -1,6 +1,6 @@
 <template>
     <div class="list-of-damage-times">
-        <h5 class="dmgt-list-h">Damage Times List</h5>
+        <h5 class="dmgt-list-h">Raid Damage List</h5>
         <table class="damage-table-times">
             <thead>
                 <tr>
@@ -15,7 +15,7 @@
                     <td class="table-id">{{ listDat[2] }}</td>
                     <td class="table-name">{{ listDat[0] }}</td>
                     <td class="table-cd">{{ secToMin(listDat[1]) }}</td>
-                    <td class="table-button p-0 m-0"><button class="delete-damage-btn" v-on:click="deleteDamageTimes(listDat[2])" n >Delete</button></td>
+                    <td class="table-button p-0 m-0"><button class="delete-damage-btn" v-on:click="deleteDamageTimes(listDat[2])"  >Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -24,7 +24,6 @@
 
 <script>
     import appMixins from '../mixins/appMixins'
-
     export default {
         mixins: [appMixins],
         props: ["g_bossFight"],
@@ -34,15 +33,6 @@
                 testColor: "#FFF",
                 listData: this.loadDamageTimesData(),
                 damageTimes: []
-            }
-        },
-        methods: {
-            loadDamageTimesData() {
-                /* load data from local storage */
-                this.damageTimes = localStorage.getItem("damagetimesData")
-                this.damageTimes=JSON.parse(this.damageTimes)
-
-                return this.damageTimes[this.g_bossFight.id]
             }
         },
         mounted() {

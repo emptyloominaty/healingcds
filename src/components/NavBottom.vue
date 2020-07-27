@@ -18,7 +18,7 @@
         text-align:left;
     }
     button {
-        margin-right: 3px;
+        margin-right: 6px;
     }
     button:focus,button:active {
         box-shadow: none !important;
