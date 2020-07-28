@@ -46,12 +46,12 @@
     button:focus,button:active {
         outline: none !important;
     }
-
     .dmgt-list-h {
         padding:10px 7px 2px 7px;
         margin: 0;
         text-align:center;
         width:300px;
     }
+
 
 </style>

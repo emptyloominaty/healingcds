@@ -1,11 +1,14 @@
 <template>
     <li class="healingcds-main">
-        <div class="healingcds-flex">
-            <span class="time-dmg">{{ secToMin(time) }} </span>
-            <button class="healing-use-btn" v-for="item in healData[g_bossFight.id]" v-bind:key="item[7]">{{ item[2]}}</button>  <!-- v-bind:style="{  backgroundColor: item[5], color: item[6] }" -->
-            <span class="name-dmg-cd">{{ damageTimesProp[idProp][0] }}</span>
+        <div v-for="item in damageTimesProp" v-bind:key="item[2]">
+            <div class="healingcds-flex">
+                <span class="time-dmg">{{ secToMin(item[1]) }} </span>
+                <button class="healing-use-btn" v-bind:id="'healCdBtn-'+itemH[7]+'-'+item[2]" v-for="itemH in healData" v-bind:key="itemH[7]" @click="useHealCd(itemH[7])" > {{ itemH[2] }}</button>
+                <!-- v-bind:style="{  backgroundColor: item[5], color: item[6] }" -->
+                <span class="name-dmg-cd"> {{ item[0] }} </span>
+            </div>
+            <hr>
         </div>
-        <hr>
     </li>
 </template>
 
@@ -15,39 +18,54 @@
     export default {
         mixins: [appMixins],
         name: 'CdTable',
-        props: ["time", "g_bossFight", "damageTimesProp", "idProp"],
+        props: ["g_bossFight", "damageTimesProp"],
         data() {
             return {
-                healData: this.loadHealCds(),
-                healingCdsDataAll: []
+                healData: this.loadHealingCdsData(),
+                cdTableHtml: ""
             }
         },
         methods: {
-            loadHealCds() {
-                this.healingCdsDataAll = localStorage.getItem("healingcdsData")
-                this.healingCdsDataAll = JSON.parse(this.healingCdsDataAll)
-                return this.healingCdsDataAll
+            useHealCd(id) {
+                    return id;
             }
+        },
+        mounted() {
+            /* listener */
+            this.$root.$on('reload-heal-list', data => (this.healData = data) )
         }
     }
 </script>
 
 
-<style scoped lang="scss">
-    .time-dmg {
-        font-size: 20px
-    }
-
-    a {
-        color: #42b983;
-    }
-
+<style scoped >
     hr {
         margin-top: 3px;
         margin-bottom: 3px;
         border: none;
         border-top: 1px solid rgba(0, 0, 0, 0.15);
     }
+
+    .time-dmg {
+        font-size: 20px;
+        margin-right:10px;
+        align-self:center;
+    }
+
+    .name-dmg-cd{
+        font-size:12px;
+        margin-left: auto;
+        align-self: center;
+        max-width: 100px;
+        word-break: break-all;
+        text-align:right;
+    }
+
+    .healingcds-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 
 
     .healingcds-main .healing-dontuse-btn {
@@ -79,14 +97,6 @@
         transition: box-shadow 100ms;
     }
 
-    .healingcds-flex {
-        display: flex;
-    }
 
-
-    .name-dmg-cd {
-       margin-left: auto;
-       align-self: center;
-    }
 
 </style>

@@ -1,32 +1,45 @@
-.delete-heal-btn,.delete-damage-btn {
+.delete-heal-btn, .delete-damage-btn {
     border: 0 solid;
     background-color: transparent;
     /*border-radius:3px;*/
     height: 40px;
     width: 100%;
-    transition: background-color 100ms ;
+    transition: background-color 100ms;
 }
 
-.delete-heal-btn:hover,.delete-damage-btn:hover {
+.delete-heal-btn:hover, .delete-damage-btn:hover {
     border: 0 solid;
-    background-color: rgba(0,0,0,0.3);
-    transition: background-color 100ms ;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 100ms;
 }
 
-table {
+
+.list-of-healing-cds {
+    margin: 20px 7px 7px 7px;
+    border-radius: 2px;
     border-collapse: collapse;
-    margin:7px;
-    box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+    background-color: #fcfcfc;
+}
+
+.list-of-damage-times {
+    align-self: flex-start;
+    margin: 20px 7px 7px 7px;
+    border-radius: 2px;
+    border-collapse: collapse;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
     background-color: #fcfcfc;
 }
 
 /* damage table */
-.damage-table-times tr:nth-child(even){
+.damage-table-times tr:nth-child(even) {
     background-color: #FFCCC7;
 }
-.damage-table-times tr:nth-child(odd){
+
+.damage-table-times tr:nth-child(odd) {
     background-color: #FFDEDB;
 }
+
 .damage-table-times th {
     background-color: #fcfcfc;
 }
@@ -51,6 +64,6 @@ td, th {
 
 .table-button {
     width: 75px;
-    display:inline-block;
+    display: inline-block;
     margin: 0 auto;
 }

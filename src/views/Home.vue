@@ -23,7 +23,7 @@
             <!--  ********************************************  -->
             <section class="cds-table pt-2">
                 <ul>
-                    <CdTable v-for="item in damageTimes" v-bind:key="item[2]" :idProp="item[2]" :time="item[1]" :g_bossFight="g_bossFight" :damageTimesProp="damageTimes" />
+                    <CdTable :g_bossFight="g_bossFight" :damageTimesProp="damageTimes"/>
                 </ul>
 
             </section>
@@ -31,18 +31,14 @@
             <navBottom/>
         </section>
         <div class="healAndDmg">
-            <section class="healcds">
-                <add-healing-cd v-bind:g_bossFight="g_bossFight"/>
+
+                <add-healing-cd class="add-healingcd" v-bind:g_bossFight="g_bossFight"/>
                 <add-damage-time class="add-damagetime" v-bind:g_bossFight="g_bossFight"
                                  @reloadHealingCdsMain="damageTimes=loadDamageTimesData(g_bossFight.id)"/>
 
-            </section>
-
-            <section class="dmgtimes">
-                <list-healing-cds v-bind:g_bossFight="g_bossFight"/>
-                <list-damage-times v-bind:g_bossFight="g_bossFight"
+                <list-healing-cds class="list-healing" v-bind:g_bossFight="g_bossFight"/>
+                <list-damage-times class="list-damage" v-bind:g_bossFight="g_bossFight"
                                    @reloadHealingCdsMain="damageTimes=loadDamageTimesData(g_bossFight.id)"/>
-            </section>
         </div>
         <flash-message class="flash-message-custom-success"></flash-message>
     </div>
@@ -156,6 +152,7 @@
 <style>
     .home {
         padding-left: 5px;
+        padding-right: 5px;
         max-width: 1170px;
         margin: 0 auto;
         text-align: left;
@@ -164,26 +161,63 @@
     .healAndDmg {
         display: flex;
         justify-content: center;
-        flex-direction: column;
-    }
-
-    .healcds, .dmgtimes {
-        display: flex;
         flex-direction: row;
-        align-self: center;
     }
 
     .add-damagetime {
         align-self: flex-start;
     }
 
+    .add-healingcd {
+        order:2;
+    }
+    .add-damagetime {
+        order:3;
+    }
+    .list-healing {
+        order:1;
+    }
+    .list-damage {
+        order:4;
+    }
+
+
+    @media screen and (max-width: 1300px) {
+        .healAndDmg {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            max-width:917px;
+          /* flex-direction: column;*/
+            flex-wrap:wrap;
+        }
+        .add-healingcd {
+            order:1;
+        }
+        .add-damagetime {
+            order:2;
+        }
+        .list-healing {
+            order:3;
+        }
+        .list-damage {
+            order:4;
+        }
+    }
+
+    @media screen and (max-width: 660px) {
+
+    }
+
+
     #id-data {
         margin: 10px;
     }
-   .main-section-app button {
-        background-color:#fff;
+
+    .main-section-app button {
+        background-color: #fff;
         border: 1px transparent;
-        box-shadow: 0 0 3px 1px rgba(0,0,0,0.3);
+        box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
     }
 
     button:focus, button:active {
