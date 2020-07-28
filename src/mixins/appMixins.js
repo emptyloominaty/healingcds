@@ -66,6 +66,15 @@ export default {
             this.damageTimes = JSON.parse(this.damageTimes)
 
             return this.damageTimes[this.g_bossFight.id]
+        },
+        loadHealCds() { //CDTable
+            this.healingCdsDataAll = localStorage.getItem("healingcdsData")
+            this.healingCdsDataAll = JSON.parse(this.healingCdsDataAll)
+            return this.healingCdsDataAll
+        },loadHealingCdsData(){ //ListHealingCds
+            return this.loadHealCds()[this.g_bossFight.id]
         }
+
+
     }
 }

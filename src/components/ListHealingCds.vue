@@ -2,7 +2,7 @@
     <div class="list-of-healing-cds">
         <h5 class="hcds-list-h">Healing CDs List</h5>
         <table>
-            <thead>
+              <thead>
                 <tr>
                     <th class="text-center">ID</th>
                     <th class="text-center">Name</th>
@@ -37,13 +37,7 @@
             }
         },
         methods: {
-            loadHealingCdsData() {
-                /* load data from local storage */
-                this.healingCdsDataAll = localStorage.getItem("healingcdsData")
-                this.healingCdsDataAll=JSON.parse(this.healingCdsDataAll)
 
-                return this.healingCdsDataAll[this.g_bossFight.id]
-            }
         },
         mounted() {
             /* listener */
