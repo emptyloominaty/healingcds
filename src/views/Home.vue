@@ -164,7 +164,7 @@
         flex-direction: row;
     }
 
-    .add-damagetime {
+    .add-damagetime,.list-healing,.list-damage {
         align-self: flex-start;
     }
 
@@ -203,10 +203,6 @@
         .list-damage {
             order:4;
         }
-    }
-
-    @media screen and (max-width: 660px) {
-
     }
 
 

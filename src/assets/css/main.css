@@ -26,3 +26,64 @@ ul {
     list-style-type: none;
 }
 
+
+/* ----------- CdTable -------------- */
+.time-dmg {
+    font-size: 20px;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.healingcds-main .healing-dontuse-btn {
+    background-color: #4CAF50;
+    color: #FFF;
+    padding: 5px 10px;
+    text-align: center;
+    display: inline-block;
+    transition: box-shadow 100ms;
+}
+
+.healingcds-main .healing-use-btn {
+    background-color: #AAA;
+    color: #FFF;
+    margin: 2px 2px 2px 2px;
+    padding: 5px 10px;
+    text-align: center;
+    display: inline-block;
+    transition: box-shadow 100ms;
+}
+
+.healingcds-main button:focus, .healingcds-main button:active {
+    outline: none !important;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.healingcds-main button:hover {
+    box-shadow: 0px 0px 6px 3px #FFF !important;
+    transition: box-shadow 100ms;
+}
+
+.healingcds-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+hr {
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+    border: none !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+
+.name-dmg-cd {
+    font-size: 12px;
+    margin-left: auto;
+    align-self: center;
+    max-width: 100px;
+    word-break: break-all;
+    text-align: right;
+}
+
+
+/* ---------------------------------- */
