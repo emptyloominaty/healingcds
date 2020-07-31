@@ -42,6 +42,7 @@
         mounted() {
             /* listener */
             this.$root.$on('reload-heal-list', data => (this.listData = data) )
+
         }
     }
 </script>

@@ -1,20 +1,17 @@
 <template>
     <li class="healingcds-main">
-        <!--
-        <div v-for="item in damageTimesProp" v-bind:key="item[2]">
+
+        <div class="healingcds-main-table" v-for="item in damageTimesProp" v-bind:key="item[2]">
             <div class="healingcds-flex">
                 <span class="time-dmg">{{ secToMin(item[1]) }} </span>
-                <button class="healing-use-btn" v-bind:id="'healCdBtn-'+itemH[7]+'-'+item[2]" v-for="itemH in healData"
-                        v-bind:key="itemH[7]"> {{ itemH[2] }}
+                <button class="healing-use-btn"  v-bind:id="'healCdBtn-'+itemH[7]+'-'+item[2]" v-for="itemH in healData"
+                        v-bind:key="itemH[7]" @click="doSomething(itemH[7],item[2],'healCdBtn-'+itemH[7]+'-'+item[2])" > {{ itemH[2] }}
                 </button>
                 <span class="name-dmg-cd"> {{ item[0] }} </span>
             </div>
             <hr>
         </div>
-        -->
-        <div class="healingcds-main-table" v-html="cdTableHtml">
-        </div>
-        <button @click="generateHcdHtml()"> CLICK PLS</button>
+
     </li>
 </template>
 
@@ -28,13 +25,26 @@
         data() {
             return {
                 healData: this.loadHealingCdsData(),
-                cdTableHtml: "<span>XD HELP ME</span>"
+                cdTableHtml: ""
             }
         },
         methods: {
-            generateHcdHtml() {
-                let htmldata = ""
+            doSomething(heal,dmg,idEl) {
+                let healBtn = document.getElementById(idEl)
+                let classBtn = healBtn.className
+                let healData = this.loadHealCds()
 
+                if (classBtn=="healing-use-btn") {
+                    healData[this.g_bossFight.id][heal][4][dmg] = dmg
+                } else {
+                    healData[this.g_bossFight.id][heal][4][dmg] = 9999
+                }
+
+                this.saveHealCds(healData)
+                this.healData = healData[this.g_bossFight.id]
+                this.generateHcdHtml()
+            },
+            generateHcdHtml() {
                 let dmgCount = this.damageTimesProp.length
                 let healCount = this.healData.length
                 let timeNext = 0
@@ -47,14 +57,13 @@
 
 
                 /* Start */
+                /* a = dmg / b = heal */
                 for (let a = 0; a < dmgCount; a++) {
                     let time = dmgTkn[a][1]
                     let healOnCd = []
-                    let canUseCD = 1
-                    /* Time */
-                    htmldata = htmldata + "<div class='healingcds-flex'> <span class='time-dmg' > " + this.secToMin(time) + " </span> "
 
-                    /* ????????????????? */
+
+                    /* is heal on cd? */
                     for (let i = 0; i < healCount; i++) {
                         if (healCd[i][3] > 0) {
                             healCd[i][3] = healCd[i][3] - (time - timeNext)
@@ -64,14 +73,14 @@
                         }
                         healOnCd[i] = healCd[i][3]
                     }
-
                     /* healing cds loop */
                     for (let b = 0; b < healCount; b++) {
-                        for (let z = 0; z < healCount; z++) {
+                        let canUseCD = 1
+                        for (let z = 0; z < dmgCount; z++) { //prev cd
                             for (let y = 0; y < dmgCount; y++) {
                                 if (healCd[b][4][y] != undefined) {
                                     if (healCd[b][4][y] != "" && healCd[b][4][y] != 9999) {
-                                        let dTime = dmgTkn[(healCd[b][4][y])][0]
+                                        let dTime = dmgTkn[(healCd[b][4][y])][1]
                                         let hCD = healCd[b][0]
                                         if (dTime > time) {
                                             if ((dTime - hCD) < time) {
@@ -83,41 +92,55 @@
                             }
                         }
 
-
+                        let healCdElement = document.getElementById("healCdBtn-"+b+"-"+a+"")
                         /* BUTTONS */
                         if (healCd[b][4].includes(a)) {
-
                             if (healOnCd[b] == 0) {
-                                healCd[b][3] = healCd[b][0];
+                                healCd[b][3] = healCd[b][0]
                                 // USED BUTTON
+                                healCdElement.className = "healing-dontuse-btn"
+                                healCdElement.style.color = healCd[b][6]
+                                healCdElement.style.backgroundColor = healCd[b][5]
                             } else {
-                                //USED BUTTON BUT CANT USE LMAO U NOOB
+                                //USED BUTTON BUT CANT USE
+                                healCdElement.className = "healing-dontuse-btn"
+                                healCdElement.style.color = "#FFF"
+                                healCdElement.style.backgroundColor = "#FF0000"
                             }
                         } else {
+
+                            healCdElement.style.color = "#FFF"
+                            healCdElement.style.backgroundColor = "#AAA"
                             if (canUseCD == 1) {
                                 if (healOnCd[b] == 0) {
                                     //USE BUTTON
-                                    htmldata = htmldata + "<button class='healing-use-btn'  @click='useHCd("+b+","+a+")'  >"+ healCd[b][2] +"</button>"
+                                    healCdElement.style.display = "inline"
+                                    healCdElement.className = "healing-use-btn"
+                                } else {
+                                    //HIDDEN
+                                    healCdElement.style.display = "none"
+                                    healCdElement.className = "healing-use-btn"
                                 }
+                            } else {
+                                //HIDDEN
+                                healCdElement.style.display = "none"
+                                healCdElement.className = "healing-use-btn"
                             }
                         }
                     }
 
                     timeNext = time;
-                    htmldata = htmldata + "<span class='name-dmg-cd'> " + dmgTkn[a][0] + " </span>" + "</div><hr>"
                 }
                 /* End */
-
-
-                this.cdTableHtml = htmldata + "<p>NAM NAM DONE CUMPLETED</p>"
             },
-            useHCd(heal,dmg) {
-               console.log(heal+dmg);
+            reloadHdata() {
+                this.healData = this.loadHealingCdsData()
             }
         },
-        mounted() {
+        created() {
             /* listener */
-            this.$root.$on('reload-heal-list', data => (this.healData = data))
+           // this.$root.$on('reload-heal-list', data => (this.healData = data))
+            this.$root.$on('reload-cd-table', () => {this.generateHcdHtml()})
         }
     }
 </script>

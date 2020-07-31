@@ -68,11 +68,13 @@
                 //v-model
                 selectData: "",
                 nameBossData: "",
+
                 //var
                 g_bossFight: {
                     id: 0,
                     name: ""
                 },
+                healingCdsDataAll: "",
                 bossData: this.loadBossData(),
                 damageTimes: this.loadDamageTimesData(0)
             }
@@ -82,7 +84,7 @@
                 this.g_bossFight.id = this.selectData.id
                 this.g_bossFight.name = this.selectData.name
 
-                this.healingCdsDataAll = localStorage.getItem("healingcdsData") //TODO: FUNCTION PLS LOAD SAVE
+                this.healingCdsDataAll = localStorage.getItem("healingcdsData")
                 this.healingCdsDataAll = JSON.parse(this.healingCdsDataAll)
 
                 /* update table */
@@ -90,6 +92,7 @@
                 /* emit */
                 this.$root.$emit('reload-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
                 this.$root.$emit('reload-damage-list', this.damageTimes)
+                this.$root.$emit('reload-cd-table')
                 /* flash */
                 this.flash('Boss Fight Selected - (' + this.g_bossFight.id + ') ' + this.g_bossFight.name, 'info', {
                     timeout: 3000,

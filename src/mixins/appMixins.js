@@ -56,7 +56,7 @@ export default {
             /*  save data to local storage */
             localStorage.setItem('damagetimesData', JSON.stringify(this.damageTimes))
             /* emit to main list */
-            this.$emit('reloadHealingCdsMain',{})
+            this.$emit('reloadHealingCdsMain')
 
             return id
         },
@@ -74,7 +74,11 @@ export default {
         },
         loadHealingCdsData(){ //ListHealingCds
             return this.loadHealCds()[this.g_bossFight.id]
+        },
+        saveHealCds(healdata) {
+            localStorage.setItem('healingcdsData', JSON.stringify(healdata))
         }
+
 
 
     }
