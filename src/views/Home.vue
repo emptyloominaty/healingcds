@@ -28,7 +28,7 @@
 
             </section>
 
-            <navBottom/>
+            <navBottom v-bind:g_bossFight="g_bossFight" />
         </section>
         <div class="healAndDmg">
 
@@ -100,15 +100,24 @@
                 });
             },
             generateBossData() {
-                return [{id: 0, name: ""}, {id: 1, name: ""}, {id: 2, name: ""}, {id: 3, name: ""}, {
-                    id: 4,
-                    name: ""
-                }, {id: 5, name: ""},
-                    {id: 6, name: ""}, {id: 7, name: ""}, {id: 8, name: ""}, {id: 9, name: ""}]
+                let bossdata = []
+                for(let i = 0; i < 50; i++) {
+                    bossdata.push({
+                        id: i,
+                        name: ""
+                    })
+                }
+                return bossdata
             },
             loadBossData() {
                 this.bossData = localStorage.getItem("bossFightNames")
-                return JSON.parse(this.bossData)
+                this.bossData = JSON.parse(this.bossData)
+                /* create data if null */
+                if (this.bossData === null) {
+                    this.bossData = this.generateBossData()
+                }
+
+                return this.bossData
             },
             saveBossData() {
                 this.bossData[this.g_bossFight.id].name = this.nameBossData

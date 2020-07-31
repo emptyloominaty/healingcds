@@ -37,6 +37,7 @@ ul {
 .healingcds-main .healing-dontuse-btn {
     background-color: #4CAF50;
     color: #FFF;
+    margin: 2px 2px 2px 2px;
     padding: 5px 10px;
     text-align: center;
     display: inline-block;
@@ -52,6 +53,12 @@ ul {
     display: inline-block;
     transition: box-shadow 100ms;
 }
+
+
+.healingcds-main .healing-hidden-btn {
+    display: none;
+}
+
 
 .healingcds-main button:focus, .healingcds-main button:active {
     outline: none !important;
