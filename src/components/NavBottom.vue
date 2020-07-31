@@ -53,7 +53,11 @@
 
                     let healCount = healData.length
                     for (let cc = 0; cc < healCount; cc++) {
-                        ertText += "NOT WORKING XD "
+                       if (healData[cc][4].includes(dd)) {
+                           let color = healData[cc][5].replace("#", "");
+                            ertText +="|cff"+color+healData[cc][2]+"|r , "
+                        }
+                      /*  ertText += "NOT WORKING XD "*/
                     }
                     ertText += "<br>"
                 }
@@ -108,7 +112,7 @@
     }
     #ert-text {
         width:100%;
-        min-height:75%;
+        height:75%;
         padding:5px;
         background-color: #f0f0f0;
         overflow: auto;
