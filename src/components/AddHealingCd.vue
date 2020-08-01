@@ -104,16 +104,16 @@
                     this.healingCdsData1 = [this.healCdTime, this.healVal, this.healName, 0, [], this.healColor, this.healFontColor,this.healingCdsLength]
                     /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color 7 id  */
                     this.healingCdsDataAll[this.g_bossFight.id][this.healingCdsLength] = (this.healingCdsData1)
-
-                    /* sender */
-                    this.$root.$emit('reload-heal-list',this.healingCdsDataAll[this.g_bossFight.id])
                     /*  store data */
                     localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
+                    /* sender */
+                    this.$root.$emit('reload-cd-table')
+                    this.$root.$emit('reload-heal-list',this.healingCdsDataAll[this.g_bossFight.id])
 
                     /* flash */
                     this.flash('Heal CD Added - '+this.healName, 'success', {timeout: 3000, important: true});
                 } else {
-                    this.flash('Choose CD u pepega', 'failure', {timeout: 4500, important: true});
+                    this.flash('Choose CD', 'failure', {timeout: 4500, important: true});
                 }
                 /* reset inputs */
                 this.healName = ""

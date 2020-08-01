@@ -26,11 +26,39 @@ ul {
     list-style-type: none;
 }
 
+.top-section {
+    display:flex;
+    justify-content: space-between;
+}
+.data-buttons {
+    align-self:flex-end;
+}
+.settings-buttons {
+    align-self:flex-end;
+}
 
+#nav-bottom,.top-section {
+    max-width:900px;
+    margin: 0 auto;
+}
+@media screen and (max-width: 1030px) {
+    .top-section {
+        flex-flow:column;
+    }
+    .data-buttons {
+        align-self:center;
+        margin:5px;
+    }
+    .settings-buttons {
+        align-self:center;
+        margin:5px;
+    }
+}
 /* ----------- CdTable -------------- */
 .time-dmg {
     font-size: 20px;
-    margin-right: 10px;
+    margin: 2px 10px 2px 2px;
+    padding: 5px 10px;
     align-self: center;
 }
 
@@ -54,6 +82,12 @@ ul {
     transition: box-shadow 100ms;
 }
 
+
+.healingcds-main .healing-hidden-btn {
+    margin: 2px 2px 2px 2px;
+    padding: 5px 10px;
+    display: inline-block;
+}
 
 .healingcds-main .healing-hidden-btn {
     display: none;

@@ -17,11 +17,10 @@
 
 <script>
     import appMixins from '../mixins/appMixins'
-
     export default {
         mixins: [appMixins],
         name: 'CdTable',
-        props: ["g_bossFight", "damageTimesProp"],
+        props: ["g_bossFight", "damageTimesProp","displayHide"],
         data() {
             return {
                 healData: this.loadHealingCdsData()
@@ -97,6 +96,13 @@
                                     }
                                 }
                                 let healCdElement = document.getElementById("healCdBtn-" + b + "-" + a + "")
+                                if (!healCdElement) {
+                                    continue
+                                }
+                                if (this.displayHide ===1) {
+                                    healCdElement.style.opacity = 1
+                                    healCdElement.style.display = "inline"}
+
                                 /* BUTTONS */
                                 if (healCd[b][4].includes(a)) {
                                     if (healOnCd[b] == 0) {
@@ -112,7 +118,6 @@
                                         healCdElement.style.backgroundColor = "#FF0000"
                                     }
                                 } else {
-
                                     healCdElement.style.color = "#FFF"
                                     healCdElement.style.backgroundColor = "#AAA"
                                     if (canUseCD == 1) {
@@ -122,12 +127,20 @@
                                             healCdElement.className = "healing-use-btn"
                                         } else {
                                             //HIDDEN
+                                        if (this.displayHide===0) {
                                             healCdElement.style.display = "none"
+                                        } else {
+                                            healCdElement.style.opacity = 0
+                                        }
                                             healCdElement.className = "healing-hidden-btn"
                                         }
                                     } else {
                                         //HIDDEN
-                                        healCdElement.style.display = "none"
+                                        if (this.displayHide===0) {
+                                            healCdElement.style.display = "none"
+                                        } else {
+                                            healCdElement.style.opacity = 0
+                                        }
                                         healCdElement.className = "healing-hidden-btn"
                                     }
                                 }
@@ -137,7 +150,7 @@
                         }
                         /*} Loop End */
 
-                    } , 30);
+                    } , 25);
 
                 return true
             },

@@ -1,10 +1,13 @@
 <template>
     <div id="nav-bottom">
-        <button class="btn btn-outline-dark" @click="hideUnusedCds()">Hide/Show Unused CDs</button>
+        <button id="hide-button" class="btn btn-outline-dark" @click="hideUnusedCds()">Hide Unused CDs</button>
         <button class="btn btn-outline-dark" @click="generateErtNote()">Generate ERT Note</button>
         <div style="display:none" id="ert-note">
+            <div class="head-ert"></div>
             <button type="button" class="hide-ert" @click="toggleErt('none')">×</button>
+            <button id="copy-ert-button" @click="copyErt()">Copy </button>
             <h5>ERT Note</h5>
+
             <hr>
             <div id="ert-text"></div>
         </div>
@@ -15,25 +18,41 @@
     import lsMixins from '../mixins/lsMixins'
 
     export default {
-        props: ["g_bossFight"],
+        props: ["g_bossFight","displayHide"],
         mixins: [lsMixins],
         name: "NavBottom",
         methods: {
+            copyErt() {
+                window.getSelection().selectAllChildren(
+                    document.getElementById("ert-text")
+                );
+                document.execCommand("copy");
+                this.flash('Ert Note - Copied', 'success', {timeout: 3000, important: true});
+            },
             hideUnusedCds() {
-                let items = document.getElementsByClassName("healing-use-btn");
-                if (!items) {
+                let items = document.getElementsByClassName("healing-use-btn")
+                let button = document.getElementById("hide-button")
+                if (items.length == 0) {
                     return false
                 }
                 let changeDisplay = ""
+                let opacityDisplay = 1
 
-                if (items[0].style.display === "none") {
+                if (items[0].style.display === "none" || items[0].style.opacity === "0" ) {
                     changeDisplay = "inline"
+                    opacityDisplay = 1
+                    button.innerText = "Hide Unused CDs"
                 } else {
                     changeDisplay = "none"
+                    opacityDisplay = 0
+                    button.innerText = "Show Unused CDs"
                 }
-
                 for (let i = 0; i < items.length; i++) {
-                    items[i].style.display = changeDisplay;
+                    if (this.displayHide===0) {
+                        items[i].style.display = changeDisplay
+                    } else {
+                        items[i].style.opacity = opacityDisplay
+                    }
                 }
             },
             generateErtNote() {
@@ -54,10 +73,9 @@
                     let healCount = healData.length
                     for (let cc = 0; cc < healCount; cc++) {
                        if (healData[cc][4].includes(dd)) {
-                           let color = healData[cc][5].replace("#", "");
+                           let color = healData[cc][5].replace("#", "")
                             ertText +="|cff"+color+healData[cc][2]+"|r , "
                         }
-                      /*  ertText += "NOT WORKING XD "*/
                     }
                     ertText += "<br>"
                 }
@@ -85,7 +103,7 @@
     }
 
     h5 {
-        padding: 3px 32px 5px 3px;
+        padding: 3px 2px 3px 3px;
         text-align: center;
     }
 
@@ -100,6 +118,9 @@
     button:hover {
         cursor: pointer;
     }
+    .head-ert {
+
+    }
 
     #ert-note {
         padding: 10px;
@@ -111,11 +132,22 @@
         box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
     }
     #ert-text {
-        width:100%;
-        height:75%;
-        padding:5px;
+        width: 100%;
+        height: 75%;
+        padding: 5px;
+        margin-top: 5px;
         background-color: #f0f0f0;
         overflow: auto;
+        display:inline-block;
+    }
+
+    #copy-ert-button {
+        line-height: 22px;
+        float: right;
+        box-shadow: 0 0 0 0 !important;
+        outline: none !important;
+        background-color: #a7a7a7;
+        color: rgba(0, 0, 0, 0.68);
     }
 
     .hide-ert {

@@ -29,10 +29,14 @@ export default {
             })
             /* flash */
             this.flash('Healing CD Deleted ', 'success', {timeout: 3000, important: true});
-            /* sender */
-            this.$root.$emit('reload-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
+
             /*  save data to local storage */
             localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
+
+            /* sender */
+            this.$root.$emit('reload-cd-table')
+            this.$root.$emit('reload-heal-list', this.healingCdsDataAll[this.g_bossFight.id])
+
 
         },
         deleteDamageTimes(id) {
@@ -64,12 +68,20 @@ export default {
             /* load data from local storage */
             this.damageTimes = localStorage.getItem("damagetimesData")
             this.damageTimes = JSON.parse(this.damageTimes)
-
+            /*  create empty array if null  */
+            if (this.damageTimes===null) {
+                this.damageTimes = [[]]
+            }
             return this.damageTimes[this.g_bossFight.id]
         },
         loadHealCds() { //CDTable
             this.healingCdsDataAll = localStorage.getItem("healingcdsData")
             this.healingCdsDataAll = JSON.parse(this.healingCdsDataAll)
+            /*  create empty array if null  */
+            if (this.healingCdsDataAll===null) {
+                this.healingCdsDataAll = [[]]
+            }
+
             return this.healingCdsDataAll
         },
         loadHealingCdsData(){ //ListHealingCds
