@@ -20,8 +20,8 @@
             <!-- Custom CD -->
             <div id="heal-user-input2">
                 <h5> Custom Healing CD </h5>
-                <label for="form-heal-name">Heal Name</label>
-                <input class="form-control text-center" id="form-heal-name" type="text" name="text" value="()"
+                <label for="form-heal-name" >Heal Name</label>
+                <input class="form-control text-center"  maxlength="20" id="form-heal-name" type="text" name="text" value="()"
                        v-model="healName"
                        autocomplete="off" >
                 <label for="form-heal-cd">Heal Cd (Sec)</label>
@@ -113,7 +113,7 @@
                     /* flash */
                     this.flash('Heal CD Added - '+this.healName, 'success', {timeout: 3000, important: true});
                 } else {
-                    this.flash('Choose CD', 'failure', {timeout: 4500, important: true});
+                    this.flash('Choose CD', 'failure', {timeout: 3000, important: true});
                 }
                 /* reset inputs */
                 this.healName = ""

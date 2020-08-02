@@ -56,6 +56,8 @@ td, th {
 
 .table-name {
     width: 115px;
+    max-width:115px;
+    overflow:hidden;
 }
 
 .table-cd {
@@ -66,4 +68,22 @@ td, th {
     width: 75px;
     display: inline-block;
     margin: 0 auto;
+}
+
+.table-name::-webkit-scrollbar-track {
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    border-radius: 5px;
+    background-color: rgba(64, 64, 64, 0.41);
+}
+
+.table-name::-webkit-scrollbar {
+    max-height:5px;
+    width: 10px;
+}
+
+.table-name::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+    border: 1px solid rgba(0, 0, 0, 0.15);
 }

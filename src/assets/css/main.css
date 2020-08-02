@@ -1,4 +1,9 @@
 
+button {
+    transition: opacity 110ms !important;
+}
+
+
 .input-group-hcd {
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
     margin: 20px 7px 7px 7px;
@@ -125,6 +130,8 @@ hr {
     word-break: break-all;
     text-align: right;
 }
-
+ul {
+    padding-left: 0;
+}
 
 /* ---------------------------------- */

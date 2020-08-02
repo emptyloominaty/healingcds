@@ -20,7 +20,7 @@
                 </div>
                 <div class="settings-buttons">
                     <button id="display-button-wide" class="btn btn-outline-dark btn-sm " @click="changeDisplayMode()">Display Mode: <b>Normal</b> </button>
-                    <button id="display-button" class="btn btn-outline-dark btn-sm " @click="changeDisplayBtn()">CD Mode: <b>Column</b> </button>
+                    <button id="display-button" class="btn btn-outline-dark btn-sm " @click="changeDisplayBtn()">CD Mode: <b>Row</b> </button>
                     <button class="btn btn-outline-dark btn-sm " @click="deleteData()" >Delete Data</button>
                 </div>
             </section>
@@ -43,7 +43,6 @@
                 <list-damage-times class="list-damage" v-bind:g_bossFight="g_bossFight"
                                    @reloadHealingCdsMain="damageTimes=loadDamageTimesData(g_bossFight.id)"/>
         </div>
-        <flash-message class="flash-message-custom-success"></flash-message>
     </div>
 </template>
 
@@ -77,7 +76,7 @@
                     id: 0,
                     name: ""
                 },
-                displayHide: 1,
+                displayHide: 0,
                 healingCdsDataAll: "",
                 bossData: this.loadBossData(),
                 damageTimes: this.loadDamageTimesData(0),
@@ -226,7 +225,7 @@
     .home {
         padding-left: 6%;
         padding-right: 6%;
-        max-width: 95%;
+        max-width: 1200px;
         margin: 0 auto;
         text-align: left;
     }

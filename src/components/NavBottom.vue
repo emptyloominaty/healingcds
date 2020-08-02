@@ -11,6 +11,7 @@
             <hr>
             <div id="ert-text"></div>
         </div>
+        <button class="btn btn-outline-dark" @click="resetCdTable()"> Reset </button>
     </div>
 </template>
 
@@ -22,6 +23,24 @@
         mixins: [lsMixins],
         name: "NavBottom",
         methods: {
+            resetCdTable() {
+                if(confirm("Do you want to reset CDs?")){
+                let healDataAll = this.ls_heal_all()
+                let healData = healDataAll[this.g_bossFight.id]
+                let healDataCount = healData.length
+                for (let a = 0; a < healDataCount; a++) {
+                    let healDataCount2 = healData[a][4].length
+                    if (healDataCount2 > 0) {
+                        for (let i = 0; i < healDataCount2; i++) {
+                            healData[a][4][i] = 9999
+                        }
+                    }
+                }
+                healDataAll[this.g_bossFight.id] = healData
+                this.store_heal(healDataAll)
+                this.$root.$emit('reload-cd-table')
+                }
+            },
             copyErt() {
                 window.getSelection().selectAllChildren(
                     document.getElementById("ert-text")

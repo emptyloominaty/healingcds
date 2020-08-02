@@ -99,12 +99,15 @@
                                 if (!healCdElement) {
                                     continue
                                 }
-                                if (this.displayHide ===1) {
-                                    healCdElement.style.opacity = 1
-                                    healCdElement.style.display = "inline"}
+                                if (this.displayHide === 1) {
+                                    healCdElement.style.display = "inline"
+                                }
 
                                 /* BUTTONS */
                                 if (healCd[b][4].includes(a)) {
+                                    if (this.displayHide === 1) {
+                                        healCdElement.style.opacity = 1
+                                    }
                                     if (healOnCd[b] == 0) {
                                         healCd[b][3] = healCd[b][0]
                                         // USED BUTTON
@@ -123,15 +126,18 @@
                                     if (canUseCD == 1) {
                                         if (healOnCd[b] == 0) {
                                             //USE BUTTON
+                                            if (this.displayHide === 1) {
+                                                healCdElement.style.opacity = 1
+                                            }
                                             healCdElement.style.display = "inline"
                                             healCdElement.className = "healing-use-btn"
                                         } else {
                                             //HIDDEN
-                                        if (this.displayHide===0) {
-                                            healCdElement.style.display = "none"
-                                        } else {
-                                            healCdElement.style.opacity = 0
-                                        }
+                                            if (this.displayHide === 0) {
+                                                healCdElement.style.display = "none"
+                                            } else {
+                                                healCdElement.style.opacity = 0
+                                            }
                                             healCdElement.className = "healing-hidden-btn"
                                         }
                                     } else {

@@ -7,19 +7,25 @@ export default {
            return data
        },
         ls_dmg() {
-            /* load damage data from local storage */
             let damageTimes = localStorage.getItem("damagetimesData")
             damageTimes = JSON.parse(damageTimes)
             damageTimes = this.dataCheck(damageTimes)
             return damageTimes[this.g_bossFight.id]
         },
         ls_heal() {
-            /* load heal data from local storage */
+           return this.ls_heal_all()[this.g_bossFight.id]
+        },
+        ls_heal_all() {
             let healingCdsData = localStorage.getItem("healingcdsData")
             healingCdsData = JSON.parse(healingCdsData)
             healingCdsData  = this.dataCheck(healingCdsData)
-            return healingCdsData[this.g_bossFight.id]
+            return healingCdsData
+        },
+        store_heal(data) {
+           localStorage.setItem('healingcdsData', JSON.stringify(data))
         }
+
+
 
     }
 }
