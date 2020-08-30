@@ -19,8 +19,8 @@
                     </button>
                 </div>
                 <div class="settings-buttons">
-                    <button id="display-button-wide" class="btn btn-outline-dark btn-sm " @click="changeDisplayMode()">Display Mode: <b>Normal</b> </button>
-                    <button id="display-button" class="btn btn-outline-dark btn-sm " @click="changeDisplayBtn()">CD Mode: <b>Row</b> </button>
+                    <button id="display-button-wide" class="btn btn-outline-dark btn-sm " @click="changeDisplayMode()">Display Mode: <b>Wide</b> </button>
+                    <button id="display-button" class="btn btn-outline-dark btn-sm " @click="changeDisplayBtn()">CD Mode: <b>Column</b> </button>
                     <button class="btn btn-outline-dark btn-sm " @click="deleteData()" >Delete Data</button>
                 </div>
             </section>
@@ -76,12 +76,12 @@
                     id: 0,
                     name: ""
                 },
-                displayHide: 0,
+                displayHide: 1,
                 healingCdsDataAll: "",
                 bossData: this.loadBossData(),
                 damageTimes: this.loadDamageTimesData(0),
                 reloadKey: 0,
-                wideMode: 0
+                wideMode: 1
             }
         },
         methods: {
@@ -225,7 +225,7 @@
     .home {
         padding-left: 6%;
         padding-right: 6%;
-        max-width: 1200px;
+        max-width: 100%;
         margin: 0 auto;
         text-align: left;
     }
@@ -283,6 +283,9 @@
         font-size: 20px;
         margin: 5px;
         color: #777;
+    }
+    .top-section {
+        padding-top: 50px;
     }
 
     .main-section-app button {
