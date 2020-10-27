@@ -62,8 +62,8 @@
                 healingCdsData1: [],
                 healingCdsLength: "",
                 healingCooldowns: [
-                    {id: 0, name: "", cooldown: "", healValue: 0, colorB: "#fff", colorF: "#000"},
-                    {id: 1, name: "Revival", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
+                    {id: 0, name: "Revival", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
+                    {id: 1, name: "Chi-Ji", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
                     {id: 2, name: "Yu'lon", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
                     {id: 3, name: "HTT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff"},
                     {id: 4, name: "SLT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff"},
