@@ -43,6 +43,7 @@
                 <list-damage-times class="list-damage" v-bind:g_bossFight="g_bossFight"
                                    @reloadHealingCdsMain="damageTimes=loadDamageTimesData(g_bossFight.id)"/>
         </div>
+        <p class="footer">Healing CDs App 2 Made by Empty </p>
     </div>
 </template>
 
@@ -285,7 +286,7 @@
         color: #777;
     }
     .top-section {
-        padding-top: 50px;
+        padding-top: 30px;
     }
 
     .main-section-app button {
@@ -313,5 +314,10 @@
 
     .data-name-select option {
         background-color: #fff;
+    }
+    .footer {
+        text-align:center;
+        margin-top:250px;
+        margin-bottom: 0;
     }
 </style>

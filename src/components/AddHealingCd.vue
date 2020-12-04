@@ -169,7 +169,7 @@
         color: #444;
         font-weight:600;
         border-color: #ced4da;
-        background-color: rgba(1, 255, 112, 0.21);
+        background-color: rgb(184, 255, 203);
 
     }
     select option{
@@ -197,8 +197,6 @@
         width: 200px;
         margin: 0 auto;
     }
-
-
 
     input:focus {
         box-shadow: none !important;

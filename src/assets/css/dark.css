@@ -1,0 +1,96 @@
+.darkMode {
+    background-color: #232226 !important;
+    color: #f7f7f7 !important;
+}
+
+.darkMode .data-buttons button, .darkMode .settings-buttons button,.darkMode #nav-bottom button,.darkMode input{
+    background-color: rgba(255,255,255,0.18) !important;
+    /*border: 1px #fff solid!important;*/
+    border: 1px transparent solid!important;
+    color: #fff!important;
+}
+.darkMode .data-buttons button:hover,.darkMode .settings-buttons button:hover,.darkMode #nav-bottom button:hover{
+    background-color: #fff!important;
+    color: #2e2c31!important;
+}
+
+.darkMode .delete-damage-btn {
+    color:#fff;
+}
+.darkMode .data-name-select {
+    background-color: #befffa !important;
+}
+
+.darkMode .damage-table-times thead {
+    background-color: #111 !important;
+}
+
+.darkMode h5 {
+    color: #fff !important;
+}
+
+.darkMode #ert-note {
+    background-color: #060606!important;
+}
+.darkMode #ert-text {
+    background-color: #2e2c31!important;
+}
+
+.darkMode .input-group-hcd {
+   /* box-shadow: 0 0 5px 1px #fcfcfc;*/
+    background-color: #111;
+}
+.darkMode hr {
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+.darkMode .delete-heal-btn:hover, .darkMode .delete-damage-btn:hover {
+    background-color: rgba(255,255,255, 0.3);
+}
+
+
+/* damage table */
+.darkMode .damage-table-times tr:nth-child(even) {
+    background-color: #291619;
+}
+
+.darkMode .damage-table-times tr:nth-child(odd) {
+    background-color: #292423;
+}
+
+.darkMode .damage-table-times th {
+    background-color: #111;
+}
+
+
+.darkMode .table-name::-webkit-scrollbar-track {
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    background-color: rgba(0, 0, 0, 0.41);
+}
+
+
+.darkMode .table-name::-webkit-scrollbar-thumb {
+  /*  box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    background-color: #737272;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+
+.darkMode .list-of-healing-cds {
+    /*box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.3);*/
+    background-color: #111111;
+}
+
+.darkMode .list-of-damage-times {
+   /* box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.3);*/
+    background-color: #111111;
+}
+
+/*.healingcds-main button:focus, .healingcds-main button:active {
+    box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.3) !important;
+}*/
+
+/*.healingcds-main button:hover {
+    box-shadow: 0px 0px 6px 3px #111 !important;
+}*/
+
