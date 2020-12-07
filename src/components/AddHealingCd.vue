@@ -72,11 +72,11 @@
                     {id: 7, name: "Tranquility", cooldown: 180, healValue: 10, colorB: "#FF7D0A", colorF: "#fff"},
                     {id: 8, name: "AW", cooldown: 120, healValue: 10, colorB: "#F58CBA", colorF: "#fff"},
                     {id: 9, name: "Aura", cooldown: 180, healValue: 10, colorB: "#F58CBA", colorF: "#fff"},
-                    {id: 10, name: "Divine Hymn", cooldown: 180, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 11, name: "Salvation", cooldown: 720, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 12, name: "Apotheosis", cooldown: 120, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 13, name: "Barrier", cooldown: 180, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
-                    {id: 14, name: "Evangelism", cooldown: 90, healValue: 10, colorB: "#fff", colorF: "#0f0f0f"},
+                    {id: 10, name: "Divine Hymn", cooldown: 180, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
+                    {id: 11, name: "Salvation", cooldown: 720, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
+                    {id: 12, name: "Apotheosis", cooldown: 120, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
+                    {id: 13, name: "Barrier", cooldown: 180, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
+                    {id: 14, name: "Evangelism", cooldown: 90, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
                     {id: 15, name: "Darkness", cooldown: 180, healValue: 10, colorB: "#A330C9", colorF: "#fff"},
                     {id: 16, name: "RallyingCry", cooldown: 180, healValue: 10, colorB: "#C79C6E", colorF: "#fff"}
                 ]
