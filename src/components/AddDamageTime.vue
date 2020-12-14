@@ -6,7 +6,7 @@
                 <div id="damage-user-input">
 
                     <input class="form-control text-center" type="text" name="text" placeholder="Damage Name (Optional)"
-                           autocomplete="off" maxlength="20" v-model="vDamageName">
+                           autocomplete="off" maxlength="30" v-model="vDamageName">
                     <input class="form-control text-center"  type="time" placeholder="Time" value="00:00"
                            autocomplete="off" v-model="vDamageTime">
                     <button id="form-damage-submit" type='submit' name='submit'>Add Damage</button>
