@@ -87,6 +87,11 @@
                     } else {
                         ertText += (Math.floor(time / 60)) + ":" + (time % 60)
                     }
+
+                   /* if (damageData[dd][0]!="") { //DAMAGE NAME IN ERT NOTE
+                        ertText += " ("+damageData[dd][0]+")"
+                    }*/
+
                     ertText += " - "
 
                     let healCount = healData.length
@@ -96,6 +101,7 @@
                             ertText +="|cff"+color+healData[cc][2]+"|r , "
                         }
                     }
+
                     ertText += "<br>"
                 }
 
