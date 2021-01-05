@@ -237,7 +237,7 @@
         flex-direction: row;
     }
 
-    .add-damagetime,.list-healing,.list-damage {
+    .add-healingcd,.add-damagetime,.list-healing,.list-damage {
         align-self: flex-start;
     }
 
