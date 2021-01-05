@@ -11,7 +11,9 @@
             <hr>
             <div id="ert-text"></div>
         </div>
+        <button class="btn btn-outline-dark" @click="switchErtNames()"> Names in ERT: {{ ertNames }} </button>
         <button class="btn btn-outline-dark" @click="resetCdTable()"> Reset </button>
+
         <button class="btn btn-outline-dark copy" @click="copy_cds(copyTo)" >Copy</button> to
         <input class="input-data-name input-copy-data" type="text" value="99" autocomplete="off" maxlength="3" v-model="copyTo" >
     </div>
@@ -26,7 +28,8 @@
         name: "NavBottom",
         data() {
             return {
-                copyTo: 25
+                copyTo: 25,
+                ertNames: 0
             }
         },
         methods: {
@@ -54,6 +57,13 @@
                 );
                 document.execCommand("copy");
                 this.flash('Ert Note - Copied', 'success', {timeout: 3000, important: true});
+            },
+            switchErtNames() {
+                if (this.ertNames===1) {
+                    this.ertNames=0
+                } else {
+                    this.ertNames=1
+                }
             },
             hideUnusedCds() {
                 let items = document.getElementsByClassName("healing-use-btn")
@@ -95,9 +105,13 @@
                         ertText += (Math.floor(time / 60)) + ":" + (time % 60)
                     }
 
-                   /* if (damageData[dd][0]!="") { //DAMAGE NAME IN ERT NOTE
-                        ertText += " ("+damageData[dd][0]+")"
-                    }*/
+
+                    if (this.ertNames===1) {
+                        if (damageData[dd][0]!="") { //DAMAGE NAME IN ERT NOTE
+                            ertText += "("+damageData[dd][0]+") "
+                        }
+                    }
+
 
                     ertText += " - "
 
