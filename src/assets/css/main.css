@@ -9,6 +9,15 @@ button {
     min-height: 100vh;
 }
 
+.input-data-name {
+    margin: 0 5px 0 5px;
+}
+
+.input-copy-data {
+    border-radius:3px;
+    width:40px;
+}
+
 
 .input-group-hcd {
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
@@ -104,7 +113,6 @@ ul {
 .healingcds-main .healing-hidden-btn {
     display: none;
 }
-
 
 .healingcds-main button:focus, .healingcds-main button:active {
     outline: none !important;

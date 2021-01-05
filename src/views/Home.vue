@@ -4,13 +4,13 @@
             <!--  ******************************************** -->
             <section class="top-section">
                 <div class="data-buttons">
-                    <span id="id-data"> {{ g_bossFight.id+" - "+g_bossFight.name }}</span>
+                    <span id="id-data"> {{(g_bossFight.id+1)+" - "+g_bossFight.name }}</span>
                     <br>
                     <select class="data-name-select" @change="selectDataMethod()" v-model="selectData">
                         <option v-for="bossDat in bossData"
                                 :key="bossDat.id"
                                 v-bind:value="{ id: bossDat.id, name: bossDat.name}">
-                            {{ bossDat.id+" - "+bossDat.name }}
+                            {{ (bossDat.id+1)+" - "+bossDat.name }}
                         </option>
                     </select>
                     <input class="input-data-name" type="text" value="" autocomplete="off" placeholder="Data Name"
@@ -145,7 +145,7 @@
                 this.$root.$emit('reload-damage-list', this.damageTimes)
                 this.$root.$emit('reload-cd-table')
                 /* flash */
-                this.flash('Boss Fight Selected - (' + this.g_bossFight.id + ') ' + this.g_bossFight.name, 'info', {
+                this.flash('Boss Fight Selected - (' + (this.g_bossFight.id+1) + ') ' + this.g_bossFight.name, 'info', {
                     timeout: 3000,
                     important: true
                 })
@@ -299,9 +299,6 @@
         box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3) !important;
     }
 
-    .input-data-name {
-        margin: 0 5px 0 5px;
-    }
     #display-button {
         margin: 0 5px 0 5px;
     }

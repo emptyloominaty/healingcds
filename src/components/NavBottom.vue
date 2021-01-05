@@ -12,6 +12,8 @@
             <div id="ert-text"></div>
         </div>
         <button class="btn btn-outline-dark" @click="resetCdTable()"> Reset </button>
+        <button class="btn btn-outline-dark copy" @click="copy_cds(copyTo)" >Copy</button> to
+        <input class="input-data-name input-copy-data" type="text" value="99" autocomplete="off" maxlength="3" v-model="copyTo" >
     </div>
 </template>
 
@@ -22,6 +24,11 @@
         props: ["g_bossFight","displayHide"],
         mixins: [lsMixins],
         name: "NavBottom",
+        data() {
+            return {
+                copyTo: 25
+            }
+        },
         methods: {
             resetCdTable() {
                 if(confirm("Do you want to reset CDs?")){
@@ -146,7 +153,9 @@
     .head-ert {
 
     }
-
+    .copy {
+        margin-left:10px;
+    }
     #ert-note {
         padding: 10px;
         position: absolute;
