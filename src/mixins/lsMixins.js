@@ -39,14 +39,25 @@ export default {
                let copyFrom = this.g_bossFight.id
                let heals = this.ls_heal_all()
                let damages = this.ls_dmg_all()
+               console.log(heals[copyTo])
+               console.log(damages[copyTo])
+               console.log(heals[copyTo]!==null)
+               console.log(heals[copyTo].length!==0)
+               if (!(heals[copyTo]===null || heals[copyTo].length===0 || damages[copyTo]===null || damages[copyTo].length===0)) {
+                   /* flash */
+                   this.flash('Cant copy cds to'+ (copyTo+1), 'failure', {timeout: 3000, important: true});
+               } else {
+                   heals[copyTo] = heals[copyFrom]
+                   damages[copyTo] = damages[copyFrom]
 
-               heals[copyTo] = heals[copyFrom]
-               damages[copyTo] = damages[copyFrom]
-
-               this.store_heal(heals)
-               this.store_damage(damages)
+                   this.store_heal(heals)
+                   this.store_damage(damages)
+                   /* flash */
+                   this.flash('Healing Cds Copied from '+ (copyFrom+1) +' to '+ (copyTo+1), 'success', {timeout: 3000, important: true});
+               }
+           } else {
                /* flash */
-               this.flash('Healing Cds Copied from '+ (copyFrom+1) +' to '+ (copyTo+1), 'success', {timeout: 3000, important: true});
+               this.flash('Cant copy cds to'+ (copyTo+1), 'failure', {timeout: 3000, important: true});
            }
        }
 
