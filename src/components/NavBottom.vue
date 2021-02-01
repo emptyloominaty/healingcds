@@ -11,11 +11,13 @@
             <hr>
             <div id="ert-text"></div>
         </div>
-        <button class="btn btn-outline-dark" @click="switchErtNames()"> Names in ERT: {{ ertNames }} </button>
+        <button class="btn btn-outline-dark" @click="switchErtNames()"> ERT Names: {{ ertNames }} </button>
+        <button class="btn btn-outline-dark" @click="switchErtIcon()"> ERT: {{ ertIconText }} </button>
         <button class="btn btn-outline-dark" @click="resetCdTable()"> Reset </button>
 
         <button class="btn btn-outline-dark copy" @click="copy_cds(copyTo)" >Copy</button> to
         <input class="input-data-name input-copy-data" type="text" value="99" autocomplete="off" maxlength="3" v-model="copyTo" >
+
     </div>
 </template>
 
@@ -29,7 +31,9 @@
         data() {
             return {
                 copyTo: 25,
-                ertNames: 0
+                ertNames: 0,
+                ertIcon: 1,
+                ertIconText: "Icon"
             }
         },
         methods: {
@@ -63,6 +67,15 @@
                     this.ertNames=0
                 } else {
                     this.ertNames=1
+                }
+            },
+            switchErtIcon() {
+                if (this.ertIcon===1) {
+                    this.ertIcon=0
+                    this.ertIconText="Text"
+                } else {
+                    this.ertIcon=1
+                    this.ertIconText="Icon"
                 }
             },
             hideUnusedCds() {
@@ -119,7 +132,14 @@
                     for (let cc = 0; cc < healCount; cc++) {
                        if (healData[cc][4].includes(dd)) {
                            let color = healData[cc][5].replace("#", "")
-                            ertText +="|cff"+color+healData[cc][2]+"|r , "
+                           if (this.ertIcon===0) {
+                               ertText +="|cff"+color+healData[cc][2]+"|r , "
+                           }
+                           if (healData[cc][8] && this.ertIcon===1) {
+                               ertText +="{spell:"+healData[cc][8]+"} "
+                           }
+
+
                         }
                     }
 

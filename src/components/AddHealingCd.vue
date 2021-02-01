@@ -10,7 +10,7 @@
                             v-for="healingCooldown in healingCooldowns"
                             :key="healingCooldown.id"
                             v-bind:value="{ id: healingCooldown.id, name: healingCooldown.name, cooldown: healingCooldown.cooldown,
-                            cdValue: healingCooldown.healValue , colorB: healingCooldown.colorB , colorF: healingCooldown.colorF }">
+                            cdValue: healingCooldown.healValue , colorB: healingCooldown.colorB , colorF: healingCooldown.colorF , spellId: healingCooldown.spellId}">
                         {{ healingCooldown.name + " | " + healingCooldown.cooldown + " s " }}
                     </option>
                 </select>
@@ -57,30 +57,33 @@
                 healVal: "",
                 healColor: "",
                 healFontColor: "",
+                spellId: "",
                 //var
                 healingCdsDataAll: [],
                 healingCdsData1: [],
                 healingCdsLength: "",
                 healingCooldowns: [
-                    {id: 0, name: "Revival", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
-                    {id: 1, name: "Chi-Ji", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
-                    {id: 2, name: "Yu'lon", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f"},
-                    {id: 3, name: "HTT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff"},
-                    {id: 4, name: "SLT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff"},
-                    {id: 5, name: "Fluorish", cooldown: 90, healValue: 10, colorB: "#FF7D0A", colorF: "#fff"},
-                    {id: 6, name: "Tree", cooldown: 180, healValue: 10, colorB: "#FF7D0A", colorF: "#fff"},
-                    {id: 7, name: "Tranquility", cooldown: 180, healValue: 10, colorB: "#FF7D0A", colorF: "#fff"},
-                    {id: 8, name: "AW", cooldown: 120, healValue: 10, colorB: "#F58CBA", colorF: "#fff"},
-                    {id: 9, name: "Aura", cooldown: 180, healValue: 10, colorB: "#F58CBA", colorF: "#fff"},
-                    {id: 10, name: "Divine Hymn", cooldown: 180, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
-                    {id: 11, name: "Salvation", cooldown: 720, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
-                    {id: 12, name: "Apotheosis", cooldown: 120, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
-                    {id: 13, name: "Barrier", cooldown: 180, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
-                    {id: 14, name: "Evangelism", cooldown: 90, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
-                    {id: 15, name: "Rapture", cooldown: 90, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
-                    {id: 16, name: "Spirit Shell", cooldown: 60, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f"},
-                    {id: 17, name: "Darkness", cooldown: 180, healValue: 10, colorB: "#A330C9", colorF: "#fff"},
-                    {id: 18, name: "RallyingCry", cooldown: 180, healValue: 10, colorB: "#C79C6E", colorF: "#fff"}
+                    {id: 0, name: "Revival", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f", spellId:"115310"},
+                    {id: 1, name: "Chi-Ji", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f" , spellId:"325197"},
+                    {id: 2, name: "Yu'lon", cooldown: 180, healValue: 10, colorB: "#00FF96", colorF: "#0f0f0f", spellId:"343655"},
+                    {id: 3, name: "HTT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff", spellId:"108280"},
+                    {id: 4, name: "SLT", cooldown: 180, healValue: 10, colorB: "#0070DE", colorF: "#fff", spellId:"98008"},
+                    {id: 5, name: "Fluorish", cooldown: 90, healValue: 10, colorB: "#FF7D0A", colorF: "#fff", spellId:"197721"},
+                    {id: 6, name: "Tree", cooldown: 180, healValue: 10, colorB: "#FF7D0A", colorF: "#fff", spellId:"33891"},
+                    {id: 7, name: "Tranquility", cooldown: 180, healValue: 10, colorB: "#FF7D0A", colorF: "#fff", spellId:"740"},
+                    {id: 8, name: "AW", cooldown: 120, healValue: 10, colorB: "#F58CBA", colorF: "#fff", spellId:"31884"},
+                    {id: 9, name: "Aura", cooldown: 180, healValue: 10, colorB: "#F58CBA", colorF: "#fff", spellId:"31821"},
+                    {id: 10, name: "Divine Hymn", cooldown: 180, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f", spellId:"64843"},
+                    {id: 11, name: "Salvation", cooldown: 720, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f", spellId:"265202"},
+                    {id: 12, name: "Apotheosis", cooldown: 120, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f", spellId:"200183"},
+                    {id: 13, name: "Barrier", cooldown: 180, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f", spellId:"62618"},
+                    {id: 14, name: "Evangelism", cooldown: 90, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f", spellId:"246287"},
+                    {id: 15, name: "Rapture", cooldown: 90, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f", spellId:"47536"},
+                    {id: 16, name: "Spirit Shell", cooldown: 60, healValue: 10, colorB: "#ffffff", colorF: "#0f0f0f", spellId:"109964"},
+                    {id: 17, name: "Darkness", cooldown: 180, healValue: 10, colorB: "#A330C9", colorF: "#fff", spellId:"196718"},
+                    {id: 18, name: "RallyingCry", cooldown: 180, healValue: 10, colorB: "#C79C6E", colorF: "#fff", spellId:"97462"},
+                    {id: 19, name: "AMZ", cooldown: 120, healValue: 10, colorB: "#C41E3A", colorF: "#fff", spellId:"51052"}
+
                 ]
             }
         },
@@ -103,8 +106,8 @@
 
                 /* add hCd data to the array */
                 if (this.healCdTime>0) {
-                    this.healingCdsData1 = [this.healCdTime, this.healVal, this.healName, 0, [], this.healColor, this.healFontColor,this.healingCdsLength]
-                    /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color 7 id  */
+                    this.healingCdsData1 = [this.healCdTime, this.healVal, this.healName, 0, [], this.healColor, this.healFontColor, this.healingCdsLength, this.spellId]
+                    /* 0 cd time  1 value 2 name 3 ???cd used???????? 4 Used at  5 background color 6 font color 7 id  // 8 =SPELLID*/
                     this.healingCdsDataAll[this.g_bossFight.id][this.healingCdsLength] = (this.healingCdsData1)
                     /*  store data */
                     localStorage.setItem('healingcdsData', JSON.stringify(this.healingCdsDataAll))
@@ -131,6 +134,7 @@
                 this.healVal = this.healSelect.healValue
                 this.healColor = this.healSelect.colorB
                 this.healFontColor = this.healSelect.colorF
+                this.spellId = this.healSelect.spellId
             }
         }
     }
