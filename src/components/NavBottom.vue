@@ -32,8 +32,8 @@
             return {
                 copyTo: 25,
                 ertNames: 0,
-                ertIcon: 1,
-                ertIconText: "Icon"
+                ertIcon: 0,
+                ertIconText: "Text"
             }
         },
         methods: {
@@ -127,13 +127,18 @@
 
 
                     ertText += " - "
-
+                    let zz = 0
                     let healCount = healData.length
                     for (let cc = 0; cc < healCount; cc++) {
+
                        if (healData[cc][4].includes(dd)) {
+                           zz++
                            let color = healData[cc][5].replace("#", "")
                            if (this.ertIcon===0) {
-                               ertText +="|cff"+color+healData[cc][2]+"|r , "
+                               if (zz>1) {
+                                   ertText +=", "
+                               }
+                               ertText +="|cff"+color+healData[cc][2]+"|r"
                            }
                            if (healData[cc][8] && this.ertIcon===1) {
                                ertText +="{spell:"+healData[cc][8]+"} "
