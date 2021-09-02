@@ -39,12 +39,13 @@ export default {
                let copyFrom = this.g_bossFight.id
                let heals = this.ls_heal_all()
                let damages = this.ls_dmg_all()
-               console.log(heals[copyTo])
-               console.log(damages[copyTo])
-               console.log(heals[copyTo]!==null)
-               console.log(heals[copyTo].length!==0)
-               if (!(heals[copyTo]===null || heals[copyTo].length===0 || damages[copyTo]===null || damages[copyTo].length===0)) {
-                   /* flash */
+
+
+             /*  if (!(heals[copyTo]===null || heals[copyTo].length===0 || damages[copyTo]===null || damages[copyTo].length===0)) {*/
+               if (!(heals[copyTo]===null || heals[copyTo]===undefined || (typeof heals[copyTo] !== 'undefined' && heals[copyTo].length === 0) ||
+                   damages[copyTo]===null  || damages[copyTo]===undefined || (typeof damages[copyTo] !== 'undefined' && damages[copyTo].length === 0))) {
+
+                       /* flash */
                    this.flash('Cant copy cds to'+ (copyTo+1), 'failure', {timeout: 3000, important: true});
                } else {
                    heals[copyTo] = heals[copyFrom]
